@@ -1,25 +1,30 @@
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --color: #000;
+  --font-sans: "Poppins";
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 html,
 body {
-  max-width: 100vw;
+  display: flex;
+  width: 100%;
+  min-width: 320px;
+  max-height: 100vh;
   overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
+  color: var(--color);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Helvetica, sans-serif;
+  font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -39,4 +44,10 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+main {
+  width: 55%;
+  background-color: #f6f4ff;
+  height: 100vh;
 }
