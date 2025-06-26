@@ -69,8 +69,8 @@ export const Sidebar = () => {
               <div
                 style={{
                   backgroundColor: `${item.icon}`,
-                  width: "15px",
-                  height: "15px",
+                  width: "12px",
+                  height: "12px",
                 }}
               ></div>
               {item.label}

@@ -32,13 +32,17 @@
       }
     }
   }
-  .toggle {
+  div {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff no-repeat center;
-    width: 40px;
-    height: 40px;
-    border-radius: 30px;
+    gap: 15px;
+    .toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff no-repeat center;
+      width: 40px;
+      height: 40px;
+      border-radius: 30px;
+    }
   }
 }
