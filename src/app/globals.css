@@ -8,7 +8,7 @@
 :root[data-theme="dark"] {
   --background-color: #2d2841;
   --background-main: #1b1b2c;
-  --color: #fff;
+  --color: #000;
 }
 :root[data-theme="light"] {
   --background-color: #fff;
@@ -48,7 +48,13 @@ a {
 
 main {
   width: 55%;
-  background-color: var(--background-main);
   height: 100vh;
+  background-color: var(--background-main);
   transition: background-color 200ms linear;
+}
+
+.custom-reference-line {
+  stroke: green !important;
+  stroke-width: 3px !important;
+  stroke-dasharray: 10 5 !important;
 }

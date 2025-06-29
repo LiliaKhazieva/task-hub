@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/recharts/Chart.jsx",
-    "src/components/dashboard/Dashboard.jsx"
+    "src/components/dashboard/Dashboard.jsx",
+    "src/components/chart/chart2.jsx"
   ],
   "exclude": ["node_modules"]
 }

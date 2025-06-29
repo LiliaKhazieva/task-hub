@@ -4,9 +4,10 @@ import { useState, useEffect, useLayoutEffect } from "react";
 export const useTheme = () => {
   const isDarkTheme = window?.matchMedia(
     "(prefers-color-scheme: dark)"
-  ).matches; // является ли текущая тема темной
+  ).matches;
+  // является ли текущая тема темной
   const defailtTheme = isDarkTheme ? "dark" : "light";
-  console.log("defailtTheme", defailtTheme);
+
   const [theme, setTheme] = useState(
     localStorage.getItem("app-theme") || defailtTheme
   );

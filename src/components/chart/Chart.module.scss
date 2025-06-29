@@ -1,0 +1,55 @@
+.wrapper {
+  margin-top: 25px;
+  background-color: #fff;
+  border-radius: 20px;
+  .chartHeader {
+    margin: 15px 20px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    .heading {
+      font-size: 20px;
+      margin-left: 20px;
+    }
+    .select {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      border: #bbb9b9 1px solid;
+      border-radius: 20px;
+      padding: 5px 10px;
+      width: 90px;
+      cursor: pointer;
+      button {
+        padding: 0;
+        border: none;
+        background-color: transparent;
+      }
+      .dropDown {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 35px;
+        left: 0;
+        width: 90px;
+        background-color: #fff;
+        z-index: 99;
+        button {
+          padding: 10px;
+          cursor: pointer;
+          border: #bbb9b9 1px solid;
+          border-radius: 20px 20px 0 0;
+          transition: all 0.5s linear;
+          &:last-child {
+            border-radius: 0 0 20px 20px;
+            border-top: none;
+          }
+          &:hover {
+            background-color: #d8d5d5;
+          }
+        }
+      }
+    }
+  }
+}
