@@ -7,12 +7,15 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ChartHeader } from "./ChartHeader";
 import { monthData, yearData } from "./chart.data";
 import { CustomTooltip } from "./CustomTooltip";
+import { ThemeContext } from "@/providers/ThemeProvider";
 
 export function Chart() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  useContext;
   const [selectedRange, setSelectedRange] = useState<IRange>({
     label: "Yearly",
     value: "yearly",
@@ -21,7 +24,9 @@ export function Chart() {
   const selectedData = selectedRange.value === "yearly" ? yearData : monthData;
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={theme === "dark" ? `task ${styles.wrapper}` : styles.wrapper}
+    >
       <ChartHeader
         selectedRange={selectedRange}
         onRangeChange={setSelectedRange}

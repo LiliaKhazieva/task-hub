@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 interface Props {
   active?: boolean;
   payload?: Array<{
@@ -7,7 +9,6 @@ interface Props {
 }
 
 export function CustomTooltip({ active, payload, label }: Props) {
-  console.log(active, payload);
   if (active && payload && payload.length) {
     return (
       <div

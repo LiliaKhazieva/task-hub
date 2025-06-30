@@ -1,11 +1,11 @@
 import { IProfile } from "@/types/profile.types";
 import { ITask } from "@/types/task.types";
-import { Plane } from "lucide-react";
+import { Bug, Plane, Shrimp } from "lucide-react";
 
 export const USERS: IProfile[] = [
   {
     id: "1",
-    name: "Lilian",
+    name: "Dark Soul",
     email: "darkens@gmail.com",
     avatar:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -31,8 +31,9 @@ export const TASKS: ITask[] = [
     id: "1",
     title: "TravelApp User Flow",
     icon: Plane,
-    dueDate: new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000),
-
+    dueDate: new Date().getDate() - 25,
+    color:
+      "repeating-linear-gradient(-45deg, #806df2, #806df2 10px, #A494F0 10px, #A494F0 20px)",
     users: [USERS[0], USERS[1], USERS[2]],
     subTasks: [
       {
@@ -62,10 +63,11 @@ export const TASKS: ITask[] = [
   },
   {
     id: "2",
-    title: "TravelApp User Flow",
-    icon: Plane,
-    dueDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
-
+    title: "Create wireframes",
+    icon: Shrimp,
+    dueDate: new Date().getDate() - 29,
+    color:
+      "repeating-linear-gradient(-45deg, #1FC2AD, #1FC2AD 10px, #008271 10px, #008271 20px)",
     users: [USERS[0], USERS[1], USERS[2]],
     subTasks: [
       {
@@ -81,12 +83,12 @@ export const TASKS: ITask[] = [
       {
         id: "3",
         title: "Create user flow",
-        isCompleted: false,
+        isCompleted: true,
       },
       {
         id: "4",
         title: "Create user flow",
-        isCompleted: false,
+        isCompleted: true,
       },
     ],
     comments: ["This is a comment", "Another comment", "Yet comment"],
@@ -95,10 +97,11 @@ export const TASKS: ITask[] = [
   },
   {
     id: "3",
-    title: "TravelApp User Flow",
-    icon: Plane,
-    dueDate: new Date(new Date().getTime() + 1 * 24 * 60 * 60 * 1000),
-
+    title: "Design UI developers",
+    icon: Bug,
+    dueDate: new Date().getDate() - 27,
+    color:
+      "repeating-linear-gradient(-45deg, #F9EFCD, #F9EFCD 10px, #F9C225 10px, #F9C225 20px)",
     users: [USERS[0], USERS[1], USERS[2]],
     subTasks: [
       {
@@ -114,7 +117,7 @@ export const TASKS: ITask[] = [
       {
         id: "3",
         title: "Create user flow",
-        isCompleted: false,
+        isCompleted: true,
       },
       {
         id: "4",

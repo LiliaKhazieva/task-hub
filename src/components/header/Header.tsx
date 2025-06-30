@@ -1,10 +1,11 @@
 "use client";
-import { Bell, Moon, Sun, SunMoon } from "lucide-react";
+import { Bell, Moon, Sun } from "lucide-react";
 import styles from "./Header.module.scss";
-import { useTheme } from "@/hooks/useTheme";
+import { useContext } from "react";
+import { ThemeContext } from "@/providers/ThemeProvider";
 
 const Header = ({ title }: { title: string }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <header className={styles.header}>
       <h1>{title}</h1>
