@@ -1,6 +1,17 @@
-.title {
-  margin: 20px;
+.wrapper {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .title {
+    // margin: 20px;
+  }
+  .sortContent {
+    display: flex;
+    gap: 15px;
+  }
 }
+
 .tasks {
   margin: 20px;
   display: flex;

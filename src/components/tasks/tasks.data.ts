@@ -29,9 +29,9 @@ export const USERS: IProfile[] = [
 export const TASKS: ITask[] = [
   {
     id: "1",
-    title: "TravelApp User Flow",
+    title: "App User Flow",
     icon: Plane,
-    dueDate: new Date().getDate() - 25,
+    dueDate: new Date().getDate() - 1,
     color:
       "repeating-linear-gradient(-45deg, #806df2, #806df2 10px, #A494F0 10px, #A494F0 20px)",
     users: [USERS[0], USERS[1], USERS[2]],
@@ -65,7 +65,7 @@ export const TASKS: ITask[] = [
     id: "2",
     title: "Create wireframes",
     icon: Shrimp,
-    dueDate: new Date().getDate() - 29,
+    dueDate: new Date().getDate() - 2,
     color:
       "repeating-linear-gradient(-45deg, #1FC2AD, #1FC2AD 10px, #008271 10px, #008271 20px)",
     users: [USERS[0], USERS[1], USERS[2]],
@@ -99,7 +99,7 @@ export const TASKS: ITask[] = [
     id: "3",
     title: "Design UI developers",
     icon: Bug,
-    dueDate: new Date().getDate() - 27,
+    dueDate: new Date().getDate() - 1,
     color:
       "repeating-linear-gradient(-45deg, #F9EFCD, #F9EFCD 10px, #F9C225 10px, #F9C225 20px)",
     users: [USERS[0], USERS[1], USERS[2]],

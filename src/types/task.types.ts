@@ -19,3 +19,5 @@ export interface ITask {
   resources: string[];
   links: string[];
 }
+
+export type TTaskStatus = "all" | "not-started" | "in-progress" | "completed";

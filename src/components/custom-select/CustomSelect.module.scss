@@ -1,0 +1,38 @@
+.select {
+  position: relative;
+  width: 150px;
+  .selected {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #fff;
+  }
+  .options {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 99;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    .option {
+      padding: 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+    &.show {
+      display: block;
+      opacity: 1;
+    }
+  }
+}
