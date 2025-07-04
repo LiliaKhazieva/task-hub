@@ -14,12 +14,15 @@
     position: relative;
     padding: 30px;
     width: 400px;
-    height: 300px;
-    background-color: #fff;
+    height: 350px;
+    background-color: #eae8ec;
     .closeBtn {
       position: absolute;
       top: 10px;
       right: 10px;
+    }
+    h4 {
+      margin-bottom: 10px;
     }
     .form {
       display: flex;
@@ -31,13 +34,31 @@
         flex-direction: column;
         gap: 10px;
         .input {
-          width: 150px;
-          background-color: transparent;
+          padding: 10px;
+          border-radius: 5px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          color: #52086a;
+          transition: border-color 0.3s ease;
+          border: rgb(185, 159, 237) 1px solid;
           outline: none;
-          border: #3c3c3c69 1px solid;
-          border-radius: 10px;
-          padding: 5px;
         }
+      }
+      button {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px;
+        outline: none;
+        border-radius: 8px;
+        background: rgb(161, 128, 228)
+          linear-gradient(rgb(131, 55, 197), rgb(183, 153, 243) 80%);
+        box-shadow: 0 4px rgba(120, 63, 170, 0.692),
+          0 3px 15px rgba(0, 0, 0, 0.4), inset 0 1px rgba(255, 255, 255, 0.3),
+          inset 0 0 3px rgba(255, 255, 255, 0.5);
+        transition: 0.2s;
+        border: 1px solid rgb(199, 170, 231);
       }
     }
   }

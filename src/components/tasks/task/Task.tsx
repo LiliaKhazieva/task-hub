@@ -67,7 +67,11 @@ export function Task({ task, theme }: { task: ITask; theme: string }) {
           <span className={styles.btn} onClick={() => setIsOpen(true)}>
             <Pencil size={13} color="#8C7DDD" />
             {isOpen && (
-              <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+              <Modal
+                task={task}
+                isOpen={isOpen}
+                onClose={() => setIsOpen(false)}
+              />
             )}
           </span>
         </div>
