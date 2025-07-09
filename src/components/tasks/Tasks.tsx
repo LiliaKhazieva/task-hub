@@ -5,100 +5,38 @@ import { useContext, useMemo, useState } from "react";
 import { ThemeContext } from "@/providers/ThemeProvider";
 import { Task } from "./task/Task";
 import { CustomSelect } from "../custom-select/CustomSelect";
+import { observer } from "mobx-react-lite";
+import { taskStore } from "@/store/store";
+import { TTaskSortBy, TTaskStatus } from "@/types/task.types";
 
 export interface ISelect {
   label: string;
   value: string;
 }
-export function Tasks() {
+export const Tasks = observer(() => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const [sort, setSort] = useState<ISelect>({
-    label: "Asc",
-    value: "asc",
-  });
-  const [selectedOption, setSelectedOption] = useState<ISelect>({
-    label: "All",
-    value: "all",
-  });
+  const filteredTask = taskStore.filteredTasks;
+  console.log("jgnjdgnj", filteredTask);
 
-  const selectData: ISelect[] = [
-    {
-      label: "All",
-      value: "all",
-    },
-    {
-      label: "Not Started",
-      value: "not-started",
-    },
-    {
-      label: "In Progress",
-      value: "in-progress",
-    },
-    {
-      label: "Completed",
-      value: "completed",
-    },
+  // const dispatch = useDispatch();
+  // const items = useSelector((state) => state.task.items);
+
+  const selectData: Array<TTaskStatus | "all"> = [
+    "all",
+    "not-started",
+    "in-progress",
+    "completed",
   ];
 
-  const sortData: ISelect[] = [
-    {
-      label: "Asc",
-      value: "asc",
-    },
-    {
-      label: "Desc",
-      value: "desc",
-    },
-  ];
-
-  const filteredTask = useMemo(() => {
-    const filtered = !setSelectedOption
-      ? TASKS
-      : TASKS.filter((task) => {
-          switch (selectedOption?.value) {
-            case "all":
-              return TASKS;
-            case "not-started":
-              return task.subTasks.every((subTask) => !subTask.isCompleted); // не выполнены каждая
-
-            case "in-progress":
-              return task.subTasks.some((subTask) => !subTask.isCompleted); //хотя бы одна выполнена
-
-            case "completed":
-              return task.subTasks.every((subTask) => subTask.isCompleted); // выполнена каждая
-
-            default:
-              return true;
-          }
-        });
-    const sortedTasks = filtered.sort((a, b) => {
-      const dateA = new Date(a.dueDate).getTime();
-      const dateB = new Date(b.dueDate).getTime();
-
-      if (sort.value === "asc") {
-        return dateA - dateB;
-      } else {
-        return dateB - dateA;
-      }
-    });
-    return sortedTasks;
-  }, [selectedOption.value, sort]);
+  const sortData: Array<TTaskSortBy | "asc"> = ["asc", "desc"];
 
   return (
     <>
       <div className={styles.wrapper}>
         <h2 className={styles.title}>Last Tasks ({filteredTask.length})</h2>
         <div className={styles.sortContent}>
-          <CustomSelect
-            options={selectData}
-            selectedOption={selectedOption}
-            setSelectedOption={setSelectedOption}
-          />
-          <CustomSelect
-            options={sortData}
-            selectedOption={sort}
-            setSelectedOption={setSort}
-          />
+          <CustomSelect options={selectData} />
+          <CustomSelect options={sortData} />
         </div>
       </div>
 
@@ -111,4 +49,4 @@ export function Tasks() {
       </div>
     </>
   );
-}
+});

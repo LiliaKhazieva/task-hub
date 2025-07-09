@@ -1,0 +1,80 @@
+.auth {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: url(https://pibig.info/uploads/posts/2022-11/1669663871_2-pibig-info-p-fon-gradient-fioletovii-oboi-2.jpg)
+    no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &::after {
+    position: absolute;
+  }
+  .authForm {
+    background: rgba(255, 255, 255, 0.192);
+    box-shadow: inset -0.75px -0.5px rgba(255, 255, 255, 0.1),
+      inset + 0.75px +0.5px rgba(255, 255, 255, 0.025);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 20px;
+    width: 400px;
+    height: 370px;
+    h2 {
+      color: #fff;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+    .header {
+      display: flex;
+      // gap: 20px;
+      align-items: center;
+      border-radius: 15px;
+      background-color: rgb(243, 243, 243);
+      margin-bottom: 40px;
+      .login,
+      .register {
+        padding: 10px;
+        border-radius: 15px;
+        color: #fff;
+
+        text-align: center;
+        font-size: 13px;
+      }
+      .login {
+        width: 50%;
+        background: rgba(46, 38, 86, 0.897);
+        box-shadow: 4px 10px 8px 0px rgba(34, 60, 80, 0.2);
+      }
+      .register {
+        width: 50%;
+        color: #000;
+      }
+    }
+    .input {
+      width: 100%;
+      height: 40px;
+      border-radius: 15px;
+      border: none;
+      margin-bottom: 10px;
+      padding: 10px 20px;
+      outline: none;
+    }
+    .button {
+      margin-top: 30px;
+      width: 100%;
+      border-radius: 15px;
+      border: none;
+      margin-bottom: 10px;
+      padding: 13px 20px;
+      background: rgba(46, 38, 86, 0.897);
+      box-shadow: 4px 10px 8px 0px rgba(34, 60, 80, 0.2);
+
+      color: #fff;
+      font-size: 16px;
+    }
+  }
+}

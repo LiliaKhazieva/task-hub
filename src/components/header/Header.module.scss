@@ -4,6 +4,7 @@
   padding: 15px 20px 0 20px;
   h1 {
     font-weight: 500;
+    color: var(--color);
   }
   .searchContainer {
     max-width: 400px;
@@ -39,7 +40,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #fff no-repeat center;
+      background: var(--background-color) no-repeat center;
       width: 40px;
       height: 40px;
       border-radius: 30px;

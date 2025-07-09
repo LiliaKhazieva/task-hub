@@ -1,6 +1,6 @@
 .wrapper {
   margin-top: 25px;
-  background-color: #fff;
+  background-color: var(--background-color);
   border-radius: 20px;
   .chartHeader {
     margin: 15px 20px 0 20px;
@@ -9,6 +9,7 @@
     .heading {
       font-size: 20px;
       margin-left: 20px;
+      color: var(--color);
     }
     .select {
       position: relative;

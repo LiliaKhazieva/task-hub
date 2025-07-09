@@ -1,43 +1,31 @@
+@import url(_variables.scss);
+
 :root {
   --font-sans: "Poppins";
   --background-color: #fff;
   --background-main: #f6f4ff;
   --color: #000;
+  --color-hover: #efeef3;
 }
-
-/* :root[data-theme="dark"] {
-  --background-color: #2d2841;
-  --background-main: #1b1b2c;
-  --color: #000;
-}
-:root[data-theme="light"] {
-  --background-color: #fff;
-  --background-main: #f6f4ff;
-  --color: #000;
-} */
 
 .dark {
   --background-color: #0f162c;
   --color: #f6f4ff;
   --background-main: #2f2b44;
+  --color-hover: #fff2;
 }
-
-/* .ligth {
-  background-color: #fff;
-  color: #000;
-} */
 
 html,
 body {
   display: flex;
-  width: 100%;
+  // width: 100%;
   min-width: 320px;
-  max-height: 100vh;
+  // max-height: 100vh;
   overflow-x: hidden;
 }
 
 body {
-  color: var(--color);
+  color: #000;
   background-color: var(--background-color);
   transition: background-color 100ms linear, color 100ms linear;
   font-family: var(--font-sans), Helvetica, sans-serif;
@@ -59,12 +47,7 @@ a {
 
 main {
   width: 55%;
-  height: 100vh;
+  height: 100%;
   background-color: var(--background-main);
   transition: background-color 200ms linear;
-}
-
-.task {
-  background-color: var(--background-color) !important;
-  color: #fff !important;
 }

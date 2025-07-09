@@ -1,73 +1,109 @@
 import { X } from "lucide-react";
 import s from "./Modal.module.scss";
 import { createPortal } from "react-dom";
-import { ITask } from "@/types/task.types";
-import { useState } from "react";
-import { error } from "console";
-import { TASKS } from "../tasks/tasks.data";
+import { ITask, TTaskFormData } from "@/types/task.types";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 
-const data = {
-  name: "Create card",
-  date: "123",
-};
+import { taskStore } from "@/store/store";
+import { toast } from "sonner";
+import { observer } from "mobx-react-lite";
+import { useForm } from "react-hook-form";
 
-export function Modal({
-  onClose,
-  isOpen,
-  task,
-}: {
-  onClose: () => void;
-  isOpen: boolean;
-  task: ITask;
-}) {
-  const [formData, setFormData] = useState("");
-  const [error, setError] = useState("");
+export const Modal = observer(
+  ({
+    onClose,
+    task,
+  }: {
+    onClose: () => void;
+    isOpen: boolean;
+    task: ITask;
+  }) => {
+    const [formData, setFormData] = useState<TTaskFormData>({
+      title: task.title,
+      dueDate: task.title,
+    });
 
-  const handleInputChange = (e) => {
-    setFormData(e.target.value);
-    if (formData.trim() === "") {
-      setError("");
-    } else {
-      setError("Field is empty");
-    }
-  };
+    const { register, handleSubmit, reset } = useForm<TTaskFormData>();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+    const [error, setError] = useState("");
+    const formRef = useRef<HTMLFormElement>(null);
 
-  return createPortal(
-    <div className={s.wrapper}>
-      <div className={s.modal} onClick={(e) => e.stopPropagation()}>
-        <X onClick={onClose} className={s.closeBtn} />
-        <h4>Edit Task {task.id}</h4>
-        <form onSubmit={handleSubmit} className={s.form}>
-          <label className={s.label}>
-            Name
-            <input
-              className={s.input}
-              style={{ borderColor: "red" }}
-              type="text"
-              name="title"
-              value={formData}
-              onChange={handleInputChange}
-            />
-          </label>
-          {error && <p style={{ color: "red", fontSize: "12px" }}>{error}</p>}
-          <label className={s.label}>
-            Due date
-            <input
-              className={s.input}
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleInputChange}
-            />
-          </label>
-          <button type="submit">Save</button>
-        </form>
-      </div>
-    </div>,
-    document.body
-  );
-}
+    // function isValidDateFormat(date: string) {
+    //   const regex = /^\d{4}-\d{2}-\d{2}$/;
+    //   return regex.test(date);
+    // }
+
+    // const isValidName = title === "";
+    // const isValidData = isValidDateFormat(date);
+
+    useEffect(() => {
+      const tasks = taskStore.getTaksById(task.id);
+      if (!tasks) return;
+      reset({
+        title: tasks.title,
+        dueDate: tasks.dueDate,
+      });
+    }, [task.id]);
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+      // if (isValidName) {
+      //   setError("Поле неможет быть пустым");
+      // }
+      const { name, value } = e.target;
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    };
+
+    const onSubmit = (data: TTaskFormData) => {
+      taskStore.updateTask(task.id, formData);
+      toast.success("Task updated successfully", {
+        id: "toastId",
+      });
+      onClose();
+    };
+
+    return createPortal(
+      <div className={s.wrapper}>
+        <div className={s.modal} onClick={(e) => e.stopPropagation()}>
+          <X onClick={onClose} className={s.closeBtn} />
+          <h4>Edit Task {task.id}</h4>
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit(onSubmit)}
+            className={s.form}
+          >
+            <label className={s.label}>
+              Name
+              <input
+                className={s.input}
+                type="text"
+                {...register("title")}
+                value={formData.title}
+                onChange={handleInputChange}
+                required
+              />
+            </label>
+
+            <p style={{ color: "red", fontSize: "12px" }}>{error}</p>
+
+            <label className={s.label}>
+              Due date
+              <input
+                className={s.input}
+                type="date"
+                {...register("dueDate")}
+                value={formData.dueDate}
+                onChange={handleInputChange}
+                required
+              />
+            </label>
+            <button type="submit">Save</button>
+          </form>
+        </div>
+      </div>,
+      document.body
+    );
+  }
+);

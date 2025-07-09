@@ -2,22 +2,22 @@
 import { sidebarData } from "./sidebar.data";
 import styles from "./Sidebar.module.scss";
 import { projectsData } from "../sidebar/sidebar.data";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { ThemeContext } from "@/providers/ThemeProvider";
+import cn from "clsx";
 
 export const Sidebar = () => {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <section className={styles.sidebarContainer}>
+    <section className={styles.container}>
       <h3>Account</h3>
       <div className={styles.user}>
         <img
           src="https://images.unsplash.com/vector-1745847439151-58e18d3c676b?q=80&w=2726&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="user"
         />
-        <div className={styles.userContent}>
+        <div className={styles.content}>
           <div>
             <span>Dark Soul</span>
             <span>darkens@gmail.com</span>

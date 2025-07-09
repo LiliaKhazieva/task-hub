@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
+import "./globals.scss";
 import { Sidebar } from "@/components/sidebar/Sidebar";
 import Chat from "@/components/chat/Chat";
 import { SITE_NAME } from "@/constants/constants";

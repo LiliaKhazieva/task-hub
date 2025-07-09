@@ -12,11 +12,12 @@ import { ChartHeader } from "./ChartHeader";
 import { monthData, yearData } from "./chart.data";
 import { CustomTooltip } from "./CustomTooltip";
 import { ThemeContext } from "@/providers/ThemeProvider";
+import { ISelect } from "../tasks/Tasks";
 
 export function Chart() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   useContext;
-  const [selectedRange, setSelectedRange] = useState<IRange>({
+  const [selectedRange, setSelectedRange] = useState<ISelect>({
     label: "Yearly",
     value: "yearly",
   });

@@ -2,31 +2,25 @@ import { useState } from "react";
 import s from "./CustomSelect.module.scss";
 import { ISelect } from "../tasks/Tasks";
 import { ChevronDown } from "lucide-react";
+import { observer } from "mobx-react-lite";
+import { taskStore } from "@/store/store";
+import { TTaskSortBy, TTaskStatus } from "@/types/task.types";
 
 interface Props {
-  options: ISelect[];
-  selectedOption: ISelect;
-  setSelectedOption: (option: ISelect) => void;
+  options: Array<TTaskStatus | "all">;
 }
 
-export function CustomSelect({
-  options,
-  selectedOption,
-  setSelectedOption,
-}: Props) {
+export const CustomSelect = observer(({ options }: Props) => {
   const [isShowOption, setIsShowOption] = useState(false);
+  const currentStatus = taskStore.status;
 
-  const handleSelect = (option: ISelect) => {
-    setSelectedOption(option);
-    setIsShowOption(false);
-  };
   return (
     <div className={s.select}>
       <div
         className={s.selected}
         onClick={() => setIsShowOption(!isShowOption)}
       >
-        {selectedOption ? selectedOption.label : "All"}
+        {currentStatus || "All"}
         <ChevronDown size={18} />
       </div>
       {isShowOption && (
@@ -35,15 +29,17 @@ export function CustomSelect({
         >
           {options.map((option) => (
             <div
-              key={option.value}
+              key={option}
               className={s.option}
-              onClick={() => handleSelect(option)}
+              onClick={() =>
+                taskStore.setStatus(option === "all" ? null : option)
+              }
             >
-              {option.label}
+              {option}
             </div>
           ))}
         </div>
       )}
     </div>
   );
-}
+});

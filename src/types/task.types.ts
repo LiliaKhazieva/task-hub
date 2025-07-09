@@ -11,7 +11,7 @@ export interface ITask {
   id: string;
   title: string;
   icon: LucideIcon;
-  dueDate: number;
+  dueDate: string;
   color: string;
   users: IProfile[];
   subTasks: ISubTask[];
@@ -20,4 +20,9 @@ export interface ITask {
   links: string[];
 }
 
-export type TTaskStatus = "all" | "not-started" | "in-progress" | "completed";
+export type TTaskStatus = "not-started" | "in-progress" | "completed";
+export type TTaskSortBy = "asc" | "desc";
+
+export type TTaskFormData = Pick<ITask, "title" | "dueDate">;
+
+export type TSubTaskData = Pick<ISubTask, "title">;

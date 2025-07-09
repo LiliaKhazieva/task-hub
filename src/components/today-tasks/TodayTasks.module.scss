@@ -1,0 +1,150 @@
+.todayTasks {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+  height: 300px;
+  .header {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    .title {
+      font-size: 22px;
+      font-weight: 600;
+    }
+    .users {
+      width: 20%;
+      position: relative;
+      display: flex;
+      .user {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px #fff solid;
+      }
+      :nth-child(2) {
+        position: absolute;
+        top: 0;
+        left: 28px;
+      }
+      :nth-child(3) {
+        position: absolute;
+        top: 0;
+        left: 55px;
+      }
+      :nth-child(4) {
+        position: absolute;
+        top: 0;
+        left: 80px;
+      }
+      :nth-child(5) {
+        position: absolute;
+        top: 0;
+        left: 105px;
+      }
+      .usersCount {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px #fff solid;
+        background-color: rgb(208, 168, 245);
+        color: #fff;
+      }
+    }
+  }
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    .dataWrapper {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 auto;
+      width: 93%;
+      .data {
+        color: #cec9c9;
+        font-weight: 500;
+      }
+      :nth-child(2) {
+        color: #c29df5;
+      }
+    }
+
+    .times {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 auto;
+      width: 89%;
+      .time {
+        height: 150px;
+        width: 1px;
+        background-color: #e7e4e485;
+      }
+      :nth-child(2) {
+        background-color: #c29df5;
+      }
+    }
+
+    .card {
+      color: #fff;
+      position: absolute;
+      top: 50px;
+      left: 90px;
+      width: 220px;
+      height: 105px;
+      border-radius: 20px;
+      background-color: #c29df5;
+      .top {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        .img {
+          justify-content: center;
+          background-color: #fff;
+          border-radius: 50%;
+          padding: 7px 7px 2px 7px;
+        }
+        .heading {
+          h5 {
+            font-size: 13px;
+            font-weight: 500;
+          }
+          span {
+            font-size: 13px;
+          }
+        }
+      }
+      .bottom {
+        margin-left: 10px;
+        position: relative;
+        .userCard {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 1px #ffff solid;
+          object-fit: cover;
+        }
+        :nth-child(2) {
+          position: absolute;
+          top: 0;
+          left: 20px;
+        }
+        :nth-child(3) {
+          position: absolute;
+          top: 0;
+          left: 40px;
+        }
+      }
+    }
+  }
+}

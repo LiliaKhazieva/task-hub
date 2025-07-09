@@ -1,6 +1,7 @@
 .select {
   position: relative;
   width: 150px;
+  color: var(--color);
   .selected {
     display: flex;
     gap: 10px;
@@ -9,7 +10,7 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     cursor: pointer;
-    background-color: #fff;
+    background-color: var(--background-main);
   }
   .options {
     position: absolute;
@@ -18,7 +19,7 @@
     left: 0;
     right: 0;
     border: 1px solid #ccc;
-    background-color: #fff;
+    background-color: var(--background-main);
     border-radius: 10px;
     z-index: 99;
     opacity: 0;
@@ -27,7 +28,7 @@
       padding: 10px;
       cursor: pointer;
       &:hover {
-        background-color: #f0f0f0;
+        background-color: var(--color-hover);
       }
     }
     &.show {

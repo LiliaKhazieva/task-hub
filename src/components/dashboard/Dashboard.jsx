@@ -2,6 +2,7 @@
 
 import { Chart } from "../chart/Chart";
 import { Tasks } from "../tasks/Tasks";
+import { TodayTasks } from "../today-tasks/TodayTasks";
 import styles from "./Dashboard.module.scss";
 
 export function Dashboard() {
@@ -47,6 +48,7 @@ export function Dashboard() {
         <Chart />
       </div>
       <Tasks />
+      <TodayTasks />
     </>
   );
 }
