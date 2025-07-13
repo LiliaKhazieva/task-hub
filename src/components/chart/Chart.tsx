@@ -17,12 +17,12 @@ import { ISelect } from "../tasks/Tasks";
 export function Chart() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   useContext;
-  const [selectedRange, setSelectedRange] = useState<ISelect>({
+  const [selectedRange, setSelectedRange] = useState<ISelect | null>({
     label: "Yearly",
     value: "yearly",
   });
 
-  const selectedData = selectedRange.value === "yearly" ? yearData : monthData;
+  const selectedData = selectedRange?.value === "yearly" ? yearData : monthData;
 
   return (
     <div

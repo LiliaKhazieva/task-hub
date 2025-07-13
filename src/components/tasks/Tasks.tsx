@@ -8,6 +8,7 @@ import { CustomSelect } from "../custom-select/CustomSelect";
 import { observer } from "mobx-react-lite";
 import { taskStore } from "@/store/store";
 import { TTaskSortBy, TTaskStatus } from "@/types/task.types";
+import { CustomSort } from "../custom-select/CustomSort";
 
 export interface ISelect {
   label: string;
@@ -22,7 +23,6 @@ export const Tasks = observer(() => {
   // const items = useSelector((state) => state.task.items);
 
   const selectData: Array<TTaskStatus | "all"> = [
-    "all",
     "not-started",
     "in-progress",
     "completed",
@@ -36,7 +36,7 @@ export const Tasks = observer(() => {
         <h2 className={styles.title}>Last Tasks ({filteredTask.length})</h2>
         <div className={styles.sortContent}>
           <CustomSelect options={selectData} />
-          <CustomSelect options={sortData} />
+          <CustomSort options={sortData} />
         </div>
       </div>
 

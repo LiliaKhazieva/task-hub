@@ -11,7 +11,7 @@ export interface ITask {
   id: string;
   title: string;
   icon: LucideIcon;
-  dueDate: string;
+  dueDate: Date;
   color: string;
   users: IProfile[];
   subTasks: ISubTask[];

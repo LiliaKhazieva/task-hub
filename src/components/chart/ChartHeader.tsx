@@ -1,12 +1,10 @@
-import { useState } from "react";
 import styles from "./Chart.module.scss";
-import { ChevronDown } from "lucide-react";
 import { timeRanges } from "./chart.data";
-import { CustomSelect } from "../custom-select/CustomSelect";
 import { ISelect } from "../tasks/Tasks";
+import Select from "react-select";
 
 interface Props {
-  onRangeChange: (select: ISelect) => void;
+  onRangeChange: (select: ISelect | null) => void;
   selectedRange: ISelect;
 }
 
@@ -14,10 +12,16 @@ export function ChartHeader({ onRangeChange, selectedRange }: Props) {
   return (
     <div className={styles.chartHeader}>
       <h2 className={styles.heading}>Project Statistic</h2>
-      <CustomSelect
+      <Select
+        defaultValue={selectedRange}
+        onChange={onRangeChange}
         options={timeRanges}
-        selectedOption={selectedRange}
-        setSelectedOption={onRangeChange}
+        styles={{
+          control: (baseStyles, state) => ({
+            ...baseStyles,
+            borderRadius: "10px",
+          }),
+        }}
       />
     </div>
   );

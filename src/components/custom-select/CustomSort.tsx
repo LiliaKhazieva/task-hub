@@ -4,15 +4,15 @@ import { ISelect } from "../tasks/Tasks";
 import { ChevronDown } from "lucide-react";
 import { observer } from "mobx-react-lite";
 import { taskStore } from "@/store/store";
-import { TTaskSortBy, TTaskStatus } from "@/types/task.types";
+import { TTaskSortBy } from "@/types/task.types";
 
 interface Props {
-  options: Array<TTaskStatus | "all">;
+  options: Array<TTaskSortBy>;
 }
 
-export const CustomSelect = observer(({ options }: Props) => {
+export const CustomSort = observer(({ options }: Props) => {
   const [isShowOption, setIsShowOption] = useState(false);
-  const currentStatus = taskStore.status;
+  const currentStatus = taskStore.sortByDueDate;
 
   return (
     <div className={s.select}>
@@ -20,7 +20,7 @@ export const CustomSelect = observer(({ options }: Props) => {
         className={s.selected}
         onClick={() => setIsShowOption(!isShowOption)}
       >
-        {currentStatus || "All"}
+        {currentStatus || "asc"}
         <ChevronDown size={18} />
       </div>
       {isShowOption && (
@@ -31,9 +31,7 @@ export const CustomSelect = observer(({ options }: Props) => {
             <div
               key={i}
               className={s.option}
-              onClick={() =>
-                taskStore.setStatus(option === "all" ? null : option)
-              }
+              onClick={() => taskStore.setSortByDueDate(option)}
             >
               {option}
             </div>

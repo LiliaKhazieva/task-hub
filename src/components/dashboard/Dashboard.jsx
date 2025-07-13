@@ -40,7 +40,7 @@ export function Dashboard() {
               <span>Working hours</span>
             </div>
             <div className={styles.imgWrapper}>
-              <img src="images/working-hours.svg" alt="" />
+              <img src="images/working-hours.svg" alt="image" />
               <div style={{ backgroundColor: "#ff8df28e" }}></div>
             </div>
           </div>

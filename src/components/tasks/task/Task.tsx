@@ -29,7 +29,11 @@ export const Task = observer(
           </p>
           <div className={styles.content}>
             <h4>{task.title}</h4>
-            <span>Due: {task.dueDate.toString()} day</span>
+            <span>
+              Due:{" "}
+              {Math.ceil((+task.dueDate - Date.now()) / (1000 * 60 * 60 * 24))}{" "}
+              days
+            </span>
           </div>
           <div className={styles.users}>
             {task.users.map((user) => (
@@ -45,7 +49,7 @@ export const Task = observer(
               backgroundImage: `${task.color}`,
             }}
           >
-            {progress}%
+            {progress === 100 ? "Done" : `${progress}%`}
           </div>
         </div>
         <div className={styles.bottom}>
