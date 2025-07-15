@@ -1,3 +1,4 @@
+"use client";
 import styles from "./Chart.module.scss";
 import { timeRanges } from "./chart.data";
 import { ISelect } from "../tasks/Tasks";

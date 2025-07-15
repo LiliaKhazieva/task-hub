@@ -5,26 +5,35 @@ import { projectsData } from "../sidebar/sidebar.data";
 import { useState } from "react";
 import Link from "next/link";
 import cn from "clsx";
+import { observer } from "mobx-react-lite";
+import { authStore } from "@/store/auth.store";
+import { LogOut } from "lucide-react";
 
-export const Sidebar = () => {
+export const Sidebar = observer(() => {
   const [isActive, setIsActive] = useState(false);
 
   return (
     <section className={styles.container}>
-      <h3>Account</h3>
-      <div className={styles.user}>
-        <img
-          src="https://images.unsplash.com/vector-1745847439151-58e18d3c676b?q=80&w=2726&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="user"
-        />
-        <div className={styles.content}>
-          <div>
-            <span>Dark Soul</span>
-            <span>darkens@gmail.com</span>
+      {authStore.isLoggedIn && (
+        <>
+          <h3>Account</h3>
+          <LogOut />
+          <div className={styles.user}>
+            <img
+              src="https://images.unsplash.com/vector-1745847439151-58e18d3c676b?q=80&w=2726&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="user"
+            />
+            <div className={styles.content}>
+              <div>
+                <span>Dark Soul</span>
+                <span>darkens@gmail.com</span>
+              </div>
+
+              <img src="/down.svg" alt="arrow-down" />
+            </div>
           </div>
-          <img src="/down.svg" alt="arrow-down" />
-        </div>
-      </div>
+        </>
+      )}
       <div className={`${styles.sidebar}`}>
         <h3>Main menu</h3>
         <ul>
@@ -80,4 +89,4 @@ export const Sidebar = () => {
       </section>
     </section>
   );
-};
+});

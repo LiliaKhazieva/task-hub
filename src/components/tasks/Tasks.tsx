@@ -17,12 +17,12 @@ export interface ISelect {
 export const Tasks = observer(() => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const filteredTask = taskStore.filteredTasks;
-  console.log("jgnjdgnj", filteredTask);
 
   // const dispatch = useDispatch();
   // const items = useSelector((state) => state.task.items);
 
   const selectData: Array<TTaskStatus | "all"> = [
+    "all",
     "not-started",
     "in-progress",
     "completed",

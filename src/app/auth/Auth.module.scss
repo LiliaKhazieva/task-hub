@@ -44,14 +44,17 @@
         text-align: center;
         font-size: 13px;
       }
-      .login {
-        width: 50%;
-        background: rgba(46, 38, 86, 0.897);
-        box-shadow: 4px 10px 8px 0px rgba(34, 60, 80, 0.2);
-      }
+      .login,
       .register {
         width: 50%;
         color: #000;
+        transition: all 0.5s ease;
+      }
+      .active {
+        background: rgba(46, 38, 86, 0.897);
+        box-shadow: 4px 10px 8px 0px rgba(34, 60, 80, 0.2);
+        color: #fff;
+        transition: all 0.5s ease;
       }
     }
     .input {
@@ -59,9 +62,11 @@
       height: 40px;
       border-radius: 15px;
       border: none;
-      margin-bottom: 10px;
       padding: 10px 20px;
       outline: none;
+    }
+    .errorBorder {
+      border: 1px red solid;
     }
     .button {
       margin-top: 30px;
@@ -75,6 +80,18 @@
 
       color: #fff;
       font-size: 16px;
+      transition: all 0.5s ease;
     }
   }
+}
+
+.error {
+  opacity: 0;
+  color: red;
+  padding: 5px 0;
+  font-size: 12px;
+}
+
+.showError {
+  opacity: 1;
 }

@@ -1,0 +1,57 @@
+.toggle {
+  position: relative;
+  height: 34px;
+  .checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    &:checked + .label {
+      background: rgba(46, 38, 86, 0.897);
+    }
+
+    &:focus + .label {
+      box-shadow: 0 0 1px #2196f3;
+    }
+
+    &:checked + .label .ball {
+      transform: translateX(26px);
+    }
+  }
+  .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+    cursor: pointer;
+    .ball {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+      &.checked {
+        transform: translateX(26px);
+        background: rgba(46, 38, 86, 0.897);
+      }
+    }
+  }
+  &:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+}

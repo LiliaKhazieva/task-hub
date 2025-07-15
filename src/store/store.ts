@@ -10,7 +10,7 @@ import { makeAutoObservable } from "mobx";
 
 class TaskStore {
   tasks: ITask[] = TASKS;
-  status: TTaskStatus | null = null;
+  status: TTaskStatus | null = "all";
   sortByDueDate: TTaskSortBy = "asc";
 
   constructor() {
@@ -52,6 +52,8 @@ class TaskStore {
     if (this.status) {
       filtered = filtered.filter((task) => {
         switch (this.status) {
+          case "all":
+            return filtered;
           case "not-started":
             return task.subTasks.every((subTask) => !subTask.isCompleted); // не выполнены каждая
 

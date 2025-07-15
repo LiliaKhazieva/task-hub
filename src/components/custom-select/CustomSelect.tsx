@@ -20,7 +20,7 @@ export const CustomSelect = observer(({ options }: Props) => {
         className={s.selected}
         onClick={() => setIsShowOption(!isShowOption)}
       >
-        {currentStatus || "All"}
+        {currentStatus || "all"}
         <ChevronDown size={18} />
       </div>
       {isShowOption && (
