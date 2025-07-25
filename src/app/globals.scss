@@ -18,9 +18,9 @@
 html,
 body {
   display: flex;
-  // width: 100%;
+  width: 100%;
   min-width: 320px;
-  // max-height: 100vh;
+  max-height: 100vh;
   overflow-x: hidden;
 }
 
@@ -46,8 +46,9 @@ a {
 }
 
 main {
-  width: 55%;
-  height: 100%;
+  width: 60%;
+  overflow-y: scroll;
+  height: 100vh;
   background-color: var(--background-main);
   transition: background-color 200ms linear;
 }

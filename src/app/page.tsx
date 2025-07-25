@@ -1,17 +1,28 @@
 import Header from "@/components/header/Header";
-import { Dashboard } from "@/components/dashboard/Dashboard";
-import ThemeProvider from "@/providers/ThemeProvider";
 
 import { Providers } from "@/providers/Providers";
-import { Sidebar } from "lucide-react";
-import Chat from "@/components/chat/Chat";
+
+import { PAGE } from "@/config/pages.config";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
     <Providers>
       <div>
         <Header title={"Dashboard"} />
-        <Dashboard />
+        <div>
+          Авторизуйтесь{" "}
+          <Link
+            href={PAGE.AUTH}
+            style={{
+              color: "#402f87",
+              textDecoration: "underline",
+            }}
+          >
+            здесь
+          </Link>{" "}
+          чтобы продолжить{" "}
+        </div>
       </div>
     </Providers>
   );

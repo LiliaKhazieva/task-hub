@@ -20,10 +20,10 @@ export const Modal = observer(
   }) => {
     const [formData, setFormData] = useState<TTaskFormData>({
       title: task.title,
-      dueDate: task.dueDate.getDate(),
+      dueDate: task.dueDate,
     });
 
-    console.log(formData);
+    console.table(formData);
 
     const { register, handleSubmit, reset } = useForm<TTaskFormData>();
 

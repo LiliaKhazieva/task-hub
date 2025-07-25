@@ -1,3 +1,4 @@
+"use client";
 import styles from "./Chart.module.scss";
 import {
   Area,

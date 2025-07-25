@@ -29,11 +29,7 @@ export const Task = observer(
           </p>
           <div className={styles.content}>
             <h4>{task.title}</h4>
-            <span>
-              Due:{" "}
-              {Math.ceil((+task.dueDate - Date.now()) / (1000 * 60 * 60 * 24))}{" "}
-              days
-            </span>
+            <span>Due: {task.dueDate.slice(8, 10)} days</span>
           </div>
           <div className={styles.users}>
             {task.users.map((user) => (

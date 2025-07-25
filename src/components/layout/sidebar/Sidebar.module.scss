@@ -6,7 +6,6 @@
   color: #9f9f9f;
   h3 {
     font-weight: 500;
-    margin: 25px 0 5px 0;
     color: var(--color);
   }
   .user {
@@ -16,6 +15,7 @@
     align-items: center;
     gap: 10px;
     padding: 5px;
+    margin-bottom: 10px;
     img {
       width: 40px;
       height: 40px;

@@ -28,6 +28,7 @@ function ThemeProvider({ children }: { children: ReactNode }) {
   };
 
   const toggleTheme = () => {
+    console.log("click");
     setMode(theme === "light" ? "dark" : "light");
   };
 

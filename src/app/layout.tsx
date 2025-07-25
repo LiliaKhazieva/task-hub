@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.scss";
-import { Sidebar } from "@/components/sidebar/Sidebar";
-import Chat from "@/components/chat/Chat";
+
 import { SITE_NAME } from "@/constants/constants";
 
 const font = Poppins({
@@ -30,11 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${font.variable}`}>
-        <Sidebar />
-        <main>{children}</main>
-        <Chat />
-      </body>
+      <body className={`${font.variable}`}>{children}</body>
     </html>
   );
 }

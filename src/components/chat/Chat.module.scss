@@ -1,8 +1,8 @@
 .chat {
-  width: 27%;
+  color: #fff;
+  width: 22%;
   .top,
   .bottom {
-    height: 50%;
     width: 100%;
     img {
       width: 100%;
@@ -10,7 +10,102 @@
       object-fit: cover;
     }
   }
+  .top {
+    height: 40%;
+  }
   .bottom {
+    height: 60%;
     background-color: #402f87;
+    .header {
+      background-color: #5b44b7;
+      height: 15%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px;
+      .img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+      }
+      .description {
+        h4 {
+          font-size: 15px;
+          font-weight: 500;
+        }
+        p {
+          font-size: 11px;
+        }
+      }
+    }
+    .messages {
+      height: 63%;
+      margin: 15px;
+      display: flex;
+      flex-direction: column;
+      overflow-y: scroll;
+      gap: 15px;
+      .message {
+        display: flex;
+        gap: 15px;
+        .imgMessage {
+          width: 20%;
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+        }
+        .descr {
+          width: 80%;
+          font-size: 12px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          .heading {
+            display: flex;
+            gap: 10px;
+            span {
+              color: #9b9a9f;
+            }
+          }
+          .headingOwn {
+            flex-direction: row-reverse;
+            justify-content: end;
+          }
+          .paragraf {
+            background-color: #7054df;
+            padding: 10px;
+            font-size: 12px;
+            border-radius: 0 15px 15px 15px;
+            word-wrap: break-word;
+          }
+          .paragrafOwn {
+            border-radius: 15px 0 15px 15px;
+          }
+        }
+      }
+      .messageOwn {
+        flex-direction: row-reverse;
+      }
+    }
+    .buttons {
+      padding: 20px;
+      height: 15%;
+      background-color: #6754b3;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      .input {
+        width: 70%;
+        font-size: 15px;
+        color: #fff;
+        padding: 10px;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        &::placeholder {
+          color: #fff;
+        }
+      }
+    }
   }
 }
