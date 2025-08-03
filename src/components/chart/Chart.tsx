@@ -34,7 +34,7 @@ export function Chart() {
         onRangeChange={setSelectedRange}
       />
       <AreaChart
-        width={540}
+        width={700}
         height={255}
         data={selectedData}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}

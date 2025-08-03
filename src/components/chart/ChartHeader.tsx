@@ -13,7 +13,7 @@ export function ChartHeader({ onRangeChange, selectedRange }: Props) {
   return (
     <div className={styles.chartHeader}>
       <h2 className={styles.heading}>Project Statistic</h2>
-      <Select
+      {/* <Select
         defaultValue={selectedRange}
         onChange={onRangeChange}
         options={timeRanges}
@@ -23,7 +23,7 @@ export function ChartHeader({ onRangeChange, selectedRange }: Props) {
             borderRadius: "10px",
           }),
         }}
-      />
+      /> */}
     </div>
   );
 }

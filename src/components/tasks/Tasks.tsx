@@ -7,16 +7,16 @@ import { Task } from "./task/Task";
 import { CustomSelect } from "../custom-select/CustomSelect";
 import { observer } from "mobx-react-lite";
 import { taskStore } from "@/store/store";
-import { TTaskSortBy, TTaskStatus } from "@/types/task.types";
+import { ITask, TTaskSortBy, TTaskStatus } from "@/types/task.types";
 import { CustomSort } from "../custom-select/CustomSort";
 
 export interface ISelect {
   label: string;
   value: string;
 }
-export const Tasks = observer(() => {
+export const Tasks = observer(({ tasks }: { tasks: ITask[] }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const filteredTask = taskStore.filteredTasks;
+  // const filteredTask = taskStore.filteredTasks;
 
   // const dispatch = useDispatch();
   // const items = useSelector((state) => state.task.items);
@@ -33,7 +33,7 @@ export const Tasks = observer(() => {
   return (
     <>
       <div className={styles.wrapper}>
-        <h2 className={styles.title}>Last Tasks ({filteredTask.length})</h2>
+        <h2 className={styles.title}>Last Tasks ({tasks?.length})</h2>
         <div className={styles.sortContent}>
           <CustomSelect options={selectData} />
           <CustomSort options={sortData} />
@@ -41,10 +41,8 @@ export const Tasks = observer(() => {
       </div>
 
       <div className={styles.tasks}>
-        {filteredTask.length
-          ? filteredTask.map((task) => (
-              <Task task={task} theme={theme} key={task.id} />
-            ))
+        {tasks?.length
+          ? tasks.map((task: any) => <Task task={task} key={task.id} />)
           : "Нет данных"}
       </div>
     </>

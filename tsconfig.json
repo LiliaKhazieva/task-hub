@@ -28,7 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/recharts/Chart.jsx",
-    "src/components/dashboard/Dashboard.jsx",
+    "src/components/dashboard/Dashboard.tsx",
     "src/components/chart/chart2.jsx",
     "src/providers/AuthProvider.tsx",
     "src/app/(auth)/auth/Auth.tsx"

@@ -2,19 +2,22 @@ import { LucideIcon } from "lucide-react";
 import { IProfile } from "./profile.types";
 
 export interface ISubTask {
-  id: string;
+  id?: string;
   title: string;
-  isCompleted: boolean;
+  is_completed?: boolean;
 }
 
 export interface ITask {
   id: string;
+  owner_id: string;
   title: string;
   icon: LucideIcon;
-  dueDate: string;
+  due_date: string;
   color: string;
   users: IProfile[];
-  subTasks: ISubTask[];
+  sub_tasks: ISubTask[];
+  start_time: string;
+  end_time: string;
   comments: string[];
   resources: string[];
   links: string[];
@@ -23,6 +26,6 @@ export interface ITask {
 export type TTaskStatus = "all" | "not-started" | "in-progress" | "completed";
 export type TTaskSortBy = "asc" | "desc";
 
-export type TTaskFormData = Pick<ITask, "title" | "dueDate">;
+export type TTaskFormData = Pick<ITask, "title" | "due_date">;
 
 export type TSubTaskData = Pick<ISubTask, "title">;

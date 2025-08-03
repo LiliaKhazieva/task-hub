@@ -1,9 +1,10 @@
 import { Chart } from "@/components/chart/Chart";
 import { Dashboard } from "@/components/dashboard/Dashboard";
 import Header from "@/components/header/Header";
-
-import { Providers } from "@/providers/Providers";
-import { taskServerGetAll } from "@/services/tasks/task-server.service";
+import {
+  getTodayTasks,
+  taskServerGetAll,
+} from "@/services/tasks/task-server.service";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,14 +12,20 @@ export const metadata: Metadata = {
 };
 
 export default async function DashboardPage() {
-  const { data } = await taskServerGetAll();
-  console.log(data);
+  const [data, todayTasks] = await Promise.all([
+    taskServerGetAll(),
+    getTodayTasks(),
+  ]);
+  if (data.error) {
+    return <div>Failed to load data</div>;
+  }
+  if (todayTasks.error) {
+    return <div>Failed to load today tasks</div>;
+  }
   return (
-    <Providers>
-      <div>
-        <Header title="Dashboard" />
-        <Dashboard />
-      </div>
-    </Providers>
+    <div>
+      <Header title="Dashboard" />
+      <Dashboard tasks={data.data || []} todayTasks={todayTasks.data || []} />
+    </div>
   );
 }

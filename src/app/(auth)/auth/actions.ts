@@ -3,7 +3,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { toast } from "sonner";
 
 export async function login({
   email,
@@ -14,13 +13,12 @@ export async function login({
 }) {
   const supabase = await createClient();
 
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const { error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
   if (error) {
     redirect("/auth");
-    toast.error("Unable to sign in. Please try again");
   }
   revalidatePath("/", "layout");
   redirect("/dashboard");
@@ -35,8 +33,11 @@ export async function signup({
 }) {
   const supabase = await createClient();
 
-  const { data, error } = await supabase.auth.signUp({ email, password });
-
+  const { error } = await supabase.auth.signUp({ email, password });
+  // await supabase.auth.signInWithPassword({
+  //   email,
+  //   password,
+  // });
   if (error) {
     redirect("/auth");
   }

@@ -45,7 +45,6 @@
         gap: 5px;
         h4 {
           font-size: 12px;
-          width: 60px;
         }
       }
       .users {
@@ -53,9 +52,10 @@
         display: flex;
         width: 35%;
         img {
+          position: absolute;
           border: 1px #fff solid;
           top: 0;
-          left: 0;
+          right: 0;
           width: 30px;
           height: 30px;
           border-radius: 50%;
@@ -63,12 +63,12 @@
           &:nth-child(2) {
             position: absolute;
             top: 0;
-            left: 20px;
+            right: 20px;
           }
           &:nth-child(3) {
             position: absolute;
             top: 0;
-            left: 40px;
+            right: 40px;
           }
         }
       }

@@ -5,7 +5,7 @@ import { Bug, Plane, Shrimp } from "lucide-react";
 export const USERS: IProfile[] = [
   {
     id: "11111111-1111-1111-1111-111111111111",
-    name: "Dark Soul",
+    name: "Lilia",
     email: "darkens@gmail.com",
     avatar:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

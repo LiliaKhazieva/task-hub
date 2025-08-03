@@ -11,59 +11,79 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { taskStore } from "@/store/store";
 import { toast } from "sonner";
-import { on, title } from "process";
+import { useMutation } from "@tanstack/react-query";
+import { createSubTask } from "@/services/tasks/task-client.service";
 
-export const CreateTask = observer(
-  ({ onClose, id, task }: { onClose: () => void; task: ITask; id: string }) => {
-    const [name, setName] = useState("");
-    const [error, setError] = useState("");
+export const CreateTask = ({
+  onClose,
+  id,
+}: {
+  onClose: () => void;
+  id: string;
+}) => {
+  // const [title, setName] = useState("");
+  const [error, setError] = useState("");
 
-    console.log(name);
+  console.log(id);
 
-    const isValidName = name === "";
+  // const isValidName = title === "";
 
-    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-      // if (name.trim()) {
-      //   setError("Поле неможет быть пустым");
-      // }
-      setName(e.target.value);
-    };
+  // const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   if (name.trim()) {
+  //     setError("Поле неможет быть пустым");
+  //   }
+  //   setName(e.target.value);
+  // };
 
-    const onSubmit = (data) => {
-      taskStore.addSubTask(id, data);
-      toast.success("SubTask updated successfully", {
-        id: "toast",
-      });
-      setName("");
-      onClose();
-    };
+  // const { mutate, isPending } = useMutation({
+  //   mutationKey: ["addSubTask", id],
+  //   mutationFn: () => createSubTask(id, { name }),
+  //   onSuccess() {
+  //     toast.success("Subtask added successfully");
+  //     setName("");
+  //     onClose();
+  //   },
+  //   onError() {
+  //     toast.error("Failed to add subtask");
+  //   },
+  // });
 
-    return createPortal(
-      <div className={s.wrapper}>
-        <div className={s.modal} onClick={(e) => e.stopPropagation()}>
-          <X onClick={onClose} className={s.closeBtn} />
-          <h4>Create subTask</h4>
-          <form className={s.form}>
-            <label className={s.label}>
-              Name
-              <input
-                className={s.input}
-                type="text"
-                value={name}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
-            {isValidName && (
-              <p style={{ color: "red", fontSize: "12px" }}>{error}</p>
-            )}
-            <button type="submit" onClick={onSubmit}>
-              Add
-            </button>
-          </form>
-        </div>
-      </div>,
-      document.body
-    );
-  }
-);
+  const onSubmit = (e) => {
+    const title = e.target[0].value;
+    createSubTask(id, { title });
+    // mutate();
+    toast.success("SubTask updated successfully", {
+      id: "toast",
+    });
+  };
+
+  return createPortal(
+    <div className={s.wrapper}>
+      <div className={s.modal} onClick={(e) => e.stopPropagation()}>
+        <X onClick={onClose} className={s.closeBtn} />
+        <h4>Create subTask{id}</h4>
+        <form onSubmit={onSubmit} className={s.form}>
+          <label className={s.label}>
+            Name
+            <input
+              className={s.input}
+              type="text"
+              // value={name}
+              // onChange={handleInputChange}
+              id="title"
+              required
+            />
+          </label>
+          {/* {isValidName && (
+            <p style={{ color: "red", fontSize: "12px" }}>{error}</p>
+          )} */}
+          <button type="submit">
+            add
+            {/* {isPending ? "Addind..." : "Add"} */}
+          </button>
+        </form>
+      </div>
+    </div>,
+    document.body
+  );
+};

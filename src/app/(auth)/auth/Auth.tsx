@@ -1,15 +1,12 @@
 "use client";
 import s from "./Auth.module.scss";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useRouter } from "next/navigation";
-import useAuth from "@/hooks/useAuth";
-import client from "@/api/client";
 import { PAGE } from "@/config/pages.config";
 import { toast } from "sonner";
 import cn from "clsx";
-import { useForm } from "react-hook-form";
 import { login, signup } from "./actions";
 
 export const Auth = () => {

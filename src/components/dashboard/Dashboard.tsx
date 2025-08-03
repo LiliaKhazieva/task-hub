@@ -1,11 +1,18 @@
 "use client";
 
+import { useEffect } from "react";
 import { Chart } from "../chart/Chart";
 import { Tasks } from "../tasks/Tasks";
 import { TodayTasks } from "../today-tasks/TodayTasks";
 import styles from "./Dashboard.module.scss";
+import { ITask } from "@/types/task.types";
 
-export function Dashboard() {
+interface Props {
+  tasks: ITask[];
+  todayTasks: ITask[];
+}
+
+export function Dashboard({ tasks, todayTasks }: Props) {
   return (
     <>
       <div className={styles.dashboard}>
@@ -47,8 +54,8 @@ export function Dashboard() {
         </div>
         <Chart />
       </div>
-      <Tasks />
-      <TodayTasks />
+      <Tasks tasks={tasks} />
+      <TodayTasks todayTasks={todayTasks} />
     </>
   );
 }

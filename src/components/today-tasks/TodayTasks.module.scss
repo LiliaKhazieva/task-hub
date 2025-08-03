@@ -76,30 +76,27 @@
       :nth-child(2) {
         color: #c29df5;
       }
-    }
-
-    .times {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin: 0 auto;
-      width: 89%;
-      .time {
-        height: 150px;
-        width: 1px;
-        background-color: #e7e4e485;
+      .times {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin: 0 auto;
+        width: 89%;
+        .time {
+          height: 150px;
+          width: 1px;
+          background-color: #e7e4e485;
+        }
+        :nth-child(2) {
+          background-color: #c29df5;
+        }
       }
-      :nth-child(2) {
-        background-color: #c29df5;
-      }
     }
-
     .card {
       color: #fff;
       position: absolute;
       top: 50px;
-      left: 90px;
-      width: 220px;
+      // width: 220px;
       height: 105px;
       border-radius: 20px;
       background-color: #c29df5;
