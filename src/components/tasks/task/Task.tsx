@@ -14,7 +14,7 @@ import { useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { CreateTask } from "@/components/formCreateSubTask/CreateTask";
 
-import { Modal } from "@/components/modal/Modal";
+import { FormEditTask } from "@/components/formEditTask/FormEditTask";
 
 export const Task = ({ task }: { task: any }) => {
   const [isOpenEdit, setIsOpenEdit] = useState(false);
@@ -24,8 +24,6 @@ export const Task = ({ task }: { task: any }) => {
     task?.sub_task?.filter((t) => t.is_completed).length || 0;
   const totalCount = task?.sub_task?.length || 0;
   const progress = Math.round((completedTask / totalCount) * 100) || 0;
-
-  console.log(completedTask, totalCount);
 
   const correctDate = new Date(task.due_date);
 
@@ -101,7 +99,7 @@ export const Task = ({ task }: { task: any }) => {
           >
             <Pencil size={13} color="#8C7DDD" />
             {isOpenEdit && (
-              <Modal
+              <FormEditTask
                 task={task}
                 isOpen={isOpenEdit}
                 onClose={() => setIsOpenEdit(false)}

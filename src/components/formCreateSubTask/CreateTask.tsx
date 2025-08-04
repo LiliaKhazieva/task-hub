@@ -1,15 +1,9 @@
 import { X } from "lucide-react";
-import s from "../modal/Modal.module.scss";
+import s from "../formEditTask/FormEditTask.module.scss";
 import { createPortal } from "react-dom";
-import {
-  ISubTask,
-  ITask,
-  TSubTaskData,
-  TTaskFormData,
-} from "@/types/task.types";
+
 import { ChangeEvent, FormEvent, useState } from "react";
-import { observer } from "mobx-react-lite";
-import { taskStore } from "@/store/store";
+
 import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 import { createSubTask } from "@/services/tasks/task-client.service";

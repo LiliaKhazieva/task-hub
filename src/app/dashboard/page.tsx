@@ -5,6 +5,7 @@ import {
   getTodayTasks,
   taskServerGetAll,
 } from "@/services/tasks/task-server.service";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

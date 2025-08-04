@@ -23,9 +23,8 @@ export interface ITask {
   links: string[];
 }
 
+export type TFormData = Pick<ITask, "title" | "due_date">;
+export type TSubTaskData = Pick<ISubTask, "title">;
+
 export type TTaskStatus = "all" | "not-started" | "in-progress" | "completed";
 export type TTaskSortBy = "asc" | "desc";
-
-export type TTaskFormData = Pick<ITask, "title" | "due_date">;
-
-export type TSubTaskData = Pick<ISubTask, "title">;

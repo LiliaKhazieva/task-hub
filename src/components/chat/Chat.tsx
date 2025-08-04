@@ -4,15 +4,13 @@ import { USERS } from "../tasks/tasks.data";
 import styles from "./Chat.module.scss";
 import cn from "clsx";
 import { createClient } from "@/utils/supabase/client";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useProfile } from "@/hooks/useProfile";
-import { useQuery } from "@tanstack/react-query";
-import { getProfile } from "@/services/profile/profile-client.servisce";
+import { useEffect, useRef, useState } from "react";
 
 const Chat = () => {
   const supabase = useRef(createClient());
+  let isOwner = false;
 
-  const user = getProfile();
+  // const { user } = useProfile();
 
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
@@ -37,7 +35,6 @@ const Chat = () => {
         }
       )
       .subscribe();
-
     return () => {
       supabase.current.removeChannel(channel);
     };
@@ -56,12 +53,12 @@ const Chat = () => {
     setText("");
   };
 
-  const isOwner = useCallback(
-    (userId: string) => {
-      return user.id === userId;
-    },
-    [user]
-  );
+  // const isOwner = useCallback(
+  //   (userId: string) => {
+  //     return user.id === userId;
+  //   },
+  //   [user]
+  // );
   return (
     <div className={styles.chat}>
       <div className={styles.top}>
@@ -115,7 +112,7 @@ const Chat = () => {
             type="text"
             placeholder="Type here..."
           />
-          <MousePointer2 />
+          <MousePointer2 onClick={sendMessage} />
         </div>
       </div>
     </div>

@@ -1,15 +1,13 @@
-import { ITask } from "@/types/task.types";
-import { USERS } from "../tasks/tasks.data";
 import s from "./TodayTasks.module.scss";
 
 export const HOURS_DATA: number[] = [9, 10, 11, 12, 1, 2, 3, 4, 5];
 
-export function TodayTasks({ todayTasks }: { todayTasks: ITask[] }) {
+export function TodayTasks({ todayTasks }: { todayTasks: any }) {
   return (
     <div className={s.todayTasks}>
       <div className={s.header}>
         <h2 className={s.title}>Today Tasks</h2>
-        <div className={s.users}>{}</div>
+        <div className={s.users}></div>
       </div>
       <div className={s.content}>
         <div className={s.dataWrapper}>
@@ -42,7 +40,7 @@ export function TodayTasks({ todayTasks }: { todayTasks: ITask[] }) {
                   key={task.id}
                 >
                   <div className={s.top}>
-                    {/* <img className={s.img} src={USERS[0].avatar} alt="" /> */}
+                    {/* <img className={s.img} src={} alt="" /> */}
                     <div className={s.heading}>
                       <h5>{task.title}</h5>
                       <span>{start}</span>
