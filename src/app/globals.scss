@@ -49,6 +49,14 @@ main {
   width: 60%;
   overflow-y: scroll;
   height: 100vh;
-  background-color: var(--background-main);
+  // background-color: var(--background-main);
   transition: background-color 200ms linear;
+}
+
+.container {
+  max-width: 1280px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  margin: 0 auto;
 }

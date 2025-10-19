@@ -34,10 +34,6 @@ export async function signup({
   const supabase = await createClient();
 
   const { error } = await supabase.auth.signUp({ email, password });
-  // await supabase.auth.signInWithPassword({
-  //   email,
-  //   password,
-  // });
   if (error) {
     redirect("/auth");
   }
