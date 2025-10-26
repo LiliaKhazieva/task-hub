@@ -2,54 +2,34 @@
 
 import s from "./Auth.module.scss";
 import { useState } from "react";
-import { toast } from "sonner";
 import cn from "clsx";
 import { login, signup } from "./actions";
+import { IAuthForm } from "./auth.interface";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 export const Auth = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<string>("");
-
   const [type, setType] = useState<"login" | "register">("login");
-  const [isValid, setIsValid] = useState(true);
 
-  const validateEmail = (email: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s_@]+$/;
-    return regex.test(email);
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<IAuthForm>({
+    mode: "onChange",
+  });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newEmail = e.target.value;
-    if (newEmail.trim() === "") {
-      setError("Поле не может быть пустым");
-    } else {
-      setError("");
-    }
-    setEmail(newEmail);
-    setIsValid(validateEmail(newEmail));
-  };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
 
-  const handleSignup = (e: any) => {
-    e.preventDefault();
-    const email = e.target[0]?.value;
-    const password = e.target[1]?.value;
-    if (!email || !password) {
-      toast.error("Please enter email and password");
-      return;
-    }
+  const onSubmit: SubmitHandler<IAuthForm> = ({ email, password }) => {
     if (type === "login") {
       login({ email, password });
-      if (error) toast.error("Unable to sign in. Please try again");
-    } else if (type === "register") {
-      signup({ email, password });
-      if (error) toast.error("Unable to sign up. Please try again");
-    }
+    } else signup({ email, password });
   };
 
   return (
     <div className={s.auth}>
-      <form onSubmit={handleSignup} className={s.authForm}>
+      <form onSubmit={handleSubmit(onSubmit)} className={s.authForm}>
         <h2>Личный кабинет</h2>
         <div className={s.header}>
           <span
@@ -66,38 +46,25 @@ export const Auth = () => {
           </span>
         </div>
         <input
-          className={cn(s.input, { [s.errorBorder]: !isValid })}
-          value={email}
-          onChange={handleInputChange}
-          id="email"
+          className={cn(s.input, { [s.errorBorder]: errors.email })}
+          {...register("email", { required: "Email is required!" })}
           type="email"
-          placeholder="Введите email"
-          required
+          placeholder="Введите email:"
         />
-        <p className={cn(s.error, { [s.showError]: !isValid })}>
-          {error ? error : "Некорректный email"}
-        </p>
+        {errors.email?.message && (
+          <p style={{ color: "red" }}>{errors.email?.message}</p>
+        )}
 
         <input
-          className={cn(s.input, { [s.errorBorder]: error })}
-          value={password}
-          onChange={(e) => {
-            if (e.target.value.trim() === "") {
-              setError("Поле не может быть пустым");
-            } else {
-              setError("");
-            }
-            setPassword(e.target.value);
-          }}
+          className={cn(s.input, { [s.errorBorder]: errors.password })}
+          {...register("password", { required: "Password is required!" })}
           type="password"
-          id="password"
-          placeholder="Введите пароль"
-          minLength={6}
-          required
+          placeholder="Введите пароль:"
         />
-        <p className={cn(s.error, { [s.showError]: error })}>
-          Пароль не может быть пустым
-        </p>
+        {errors.password?.message && (
+          <p style={{ color: "red" }}>{errors.password.message}</p>
+        )}
+
         {type === "login" ? (
           <button type="submit" className={s.button}>
             Войти

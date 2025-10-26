@@ -8,14 +8,14 @@ export const USERS: IProfile[] = [
     name: "Lilia",
     email: "darkens@gmail.com",
     avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://yaart-web-alice-images.s3.yandex.net/3162f1d7b27211f080d50ed853a713d3:1",
   },
   {
     id: "22222222-2222-2222-2222-222222222222",
     name: "David",
     email: "lololoshka@gmail.com",
     avatar:
-      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://yaart-web-alice-images.s3.yandex.net/remixed_82262220b27211f0b3099e6ec7290088_1002863345_generation_0",
   },
   {
     id: "33333333-3333-3333-3333-333333333333",
@@ -29,7 +29,7 @@ export const USERS: IProfile[] = [
     name: "Maria",
     email: "maria@gmail.com",
     avatar:
-      "https://images.unsplash.com/vector-1741591987044-45ceb2033abc?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://yaart-web-alice-images.s3.yandex.net/c9805dafb27211f0a802aeb24f0405d6:1",
   },
   {
     id: "55555555-5555-5555-5555-555555555555",
@@ -43,14 +43,14 @@ export const USERS: IProfile[] = [
     name: "Pavel",
     email: "pavel@gmail.com",
     avatar:
-      "https://images.unsplash.com/photo-1640960543409-dbe56ccc30e2?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://yaart-web-alice-images.s3.yandex.net/ded77fc3b27211f0b661b26ea6470736:1",
   },
   {
     id: "77777777-7777-7777-7777-777777777777",
     name: "Daria",
     email: "daria@gmail.com",
     avatar:
-      "https://images.unsplash.com/photo-1702478629992-bd590033779d?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://yaart-web-alice-images.s3.yandex.net/c9805dafb27211f0a802aeb24f0405d6:1",
   },
 ];
 

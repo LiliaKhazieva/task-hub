@@ -1,4 +1,3 @@
-import { LucideIcon } from "lucide-react";
 import z from "zod";
 
 export const TaskSchema = z.object({
