@@ -1,5 +1,6 @@
 import Chat from "@/components/chat/Chat";
-import { Sidebar } from "@/components/layout/sidebar/Sidebar";
+import { Sidebar } from "@/components/sidebar/Sidebar";
+
 import { PAGE } from "@/config/pages.config";
 import { getProfile } from "@/services/profile/profile-client.servisce";
 import { getServerAuth } from "@/utils/supabase/get-server-auth";
@@ -9,8 +10,6 @@ import { PropsWithChildren } from "react";
 export default async function DashboardLayout({ children }: PropsWithChildren) {
   const user = await getServerAuth();
 
-  // console.log(user);
-
   if (!user) {
     redirect(PAGE.AUTH);
   }
@@ -18,7 +17,7 @@ export default async function DashboardLayout({ children }: PropsWithChildren) {
     <>
       <Sidebar />
       <main>{children}</main>
-      <Chat />
+      {/* <Chat /> */}
     </>
   );
 }

@@ -55,7 +55,7 @@ export function Dashboard({ tasks, todayTasks }: Props) {
         <Chart />
       </div>
       <Tasks tasks={tasks} />
-      <TodayTasks todayTasks={todayTasks} />
+      {/* <TodayTasks todayTasks={todayTasks} /> */}
     </>
   );
 }

@@ -4,21 +4,16 @@ import styles from "./Sidebar.module.scss";
 import { projectsData } from "../sidebar/sidebar.data";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import cn from "clsx";
-import { observer } from "mobx-react-lite";
-import { authStore } from "@/store/auth.store";
-import { LogOut } from "lucide-react";
+import { LogOut, Pointer, PoundSterling } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/config/pages.config";
-import { getProfile } from "@/services/profile/profile-client.servisce";
-import { error, profile } from "console";
-import { useQuery } from "@tanstack/react-query";
-import { getServerAuth } from "@/utils/supabase/get-server-auth";
-import { SupabaseClient } from "@supabase/supabase-js";
+import cn from "clsx";
+import clsx from "clsx";
 
 export function Sidebar() {
-  const [isActive, setIsActive] = useState(false);
+  const [data, setData] = useState(null);
+  const [active, setActive] = useState(0);
   const router = useRouter();
 
   async function signOut() {
@@ -28,20 +23,16 @@ export function Sidebar() {
     }
   }
 
-  const [data, setData] = useState(null);
-
-  console.log(data);
-
   useEffect(() => {
     // функция для выполнения запроса
     const fetchData = async () => {
       try {
-        const { data, error } = await createClient().auth.getUser();
+        const { data } = await createClient().auth.getUser();
         const profile = await createClient()
           .from("profile")
           .select(`*`)
           .eq("id", data.user?.id)
-          .single(); // Замените на ваш URL
+          .single();
         if (!profile) {
           throw new Error(`Ошибка HTTP: ой ой`);
         }
@@ -52,7 +43,7 @@ export function Sidebar() {
     };
 
     fetchData();
-  }, []); // Пустой массив зависимостей означает, что эффект выполнится только один раз при монтировании компонента
+  }, []);
 
   return (
     <section className={styles.container}>
@@ -66,7 +57,7 @@ export function Sidebar() {
       >
         {" "}
         <h3>Account</h3>
-        <LogOut onClick={signOut} />
+        <LogOut onClick={signOut} style={{ cursor: "pointer" }} />
       </div>
 
       <div className={styles.user}>
@@ -79,37 +70,18 @@ export function Sidebar() {
         </div>
       </div>
 
-      <div className={`${styles.sidebar}`}>
+      <div className={styles.sidebar}>
         <h3>Main menu</h3>
         <ul>
           {sidebarData.map((item, i) => (
-            <li key={`icon_${i}`}>
+            <li
+              key={i}
+              className={i === active ? styles.active : ""}
+              onClick={() => setActive(i)}
+            >
               <Link href={item.link}>
                 <item.icon size={20} />
-
-                <div
-                  style={{
-                    display: "flex",
-                    width: "80%",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    gap: "5px",
-                  }}
-                >
-                  <span>{item.label}</span>
-                  {item.number && (
-                    <span
-                      style={{
-                        fontSize: "13px",
-                        backgroundColor: "#D8DCFA",
-                        padding: "0 8px",
-                        borderRadius: "10px",
-                      }}
-                    >
-                      {item.number}
-                    </span>
-                  )}
-                </div>
+                <span>{item.label}</span>
               </Link>
             </li>
           ))}
@@ -119,7 +91,7 @@ export function Sidebar() {
         <h3>Projects</h3>
         <ul>
           {projectsData.map((item, i) => (
-            <li key={`project_${i}`}>
+            <li key={i}>
               <div
                 style={{
                   backgroundColor: `${item.icon}`,

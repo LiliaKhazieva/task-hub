@@ -2,7 +2,7 @@
   width: 18%;
   display: flex;
   flex-direction: column;
-  padding: 2% 20px;
+  padding: 0 15px 0;
   color: #9f9f9f;
   h3 {
     font-weight: 500;
@@ -50,19 +50,28 @@
   }
 
   .sidebar {
+    > h3 {
+      padding: 10px 0;
+    }
     ul {
       list-style: none;
       li {
-        padding: 10px 10px;
+        padding: 10px;
         border-radius: 30px;
         width: 100%;
         a {
           display: flex;
           gap: 10px;
         }
-        &:first-child {
-          background-color: #725cee;
-          color: #fff;
+        &:hover {
+          color: #725cee;
+        }
+      }
+      .active {
+        background-color: #725cee;
+        color: #fff;
+        &:hover {
+          color: #e6e0e0;
         }
       }
     }
@@ -72,8 +81,12 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      color: #9f9f9f !important;
-      background-color: inherit !important;
+      color: #9f9f9f;
+      background-color: inherit;
+      cursor: pointer;
+      &:hover {
+        color: #725cee;
+      }
     }
   }
 }
