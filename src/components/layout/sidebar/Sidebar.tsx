@@ -2,7 +2,7 @@
 import { sidebarData } from "./sidebar.data";
 import styles from "./Sidebar.module.scss";
 import { projectsData } from "../sidebar/sidebar.data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import cn from "clsx";
 import { observer } from "mobx-react-lite";
@@ -11,8 +11,13 @@ import { LogOut } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/config/pages.config";
+import { getProfile } from "@/services/profile/profile-client.servisce";
+import { error, profile } from "console";
+import { useQuery } from "@tanstack/react-query";
+import { getServerAuth } from "@/utils/supabase/get-server-auth";
+import { SupabaseClient } from "@supabase/supabase-js";
 
-export const Sidebar = observer(() => {
+export function Sidebar() {
   const [isActive, setIsActive] = useState(false);
   const router = useRouter();
 
@@ -22,6 +27,32 @@ export const Sidebar = observer(() => {
       router.push(PAGE.AUTH);
     }
   }
+
+  const [data, setData] = useState(null);
+
+  console.log(data);
+
+  useEffect(() => {
+    // функция для выполнения запроса
+    const fetchData = async () => {
+      try {
+        const { data, error } = await createClient().auth.getUser();
+        const profile = await createClient()
+          .from("profile")
+          .select(`*`)
+          .eq("id", data.user?.id)
+          .single(); // Замените на ваш URL
+        if (!profile) {
+          throw new Error(`Ошибка HTTP: ой ой`);
+        }
+        setData(profile.data);
+      } catch (error) {
+        console.error("Произошла ошибка:", error);
+      }
+    };
+
+    fetchData();
+  }, []); // Пустой массив зависимостей означает, что эффект выполнится только один раз при монтировании компонента
 
   return (
     <section className={styles.container}>
@@ -39,17 +70,12 @@ export const Sidebar = observer(() => {
       </div>
 
       <div className={styles.user}>
-        <img
-          src="https://yaart-web-alice-images.s3.yandex.net/3162f1d7b27211f080d50ed853a713d3:1"
-          alt="user"
-        />
+        <img src={data?.avatar_path} alt="user" />
         <div className={styles.content}>
           <div>
-            <span>Dark Soul</span>
+            <span>{data?.name}</span>
             <span>darkens@gmail.com</span>
           </div>
-
-          <img src="/down.svg" alt="arrow-down" />
         </div>
       </div>
 
@@ -108,4 +134,4 @@ export const Sidebar = observer(() => {
       </section>
     </section>
   );
-});
+}
