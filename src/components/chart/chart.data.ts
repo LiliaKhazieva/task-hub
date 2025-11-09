@@ -1,5 +1,3 @@
-import { ISelect } from "../tasks/Tasks";
-
 export const yearData: IChartDataPoint[] = [
   { label: "Jan", value: 19 },
   { label: "Feb", value: 14 },
@@ -15,9 +13,4 @@ export const monthData: IChartDataPoint[] = [
   { label: "Week 2", value: 14 },
   { label: "Week 3", value: 20 },
   { label: "Week 4", value: 12 },
-];
-
-export const timeRanges: ISelect[] = [
-  { label: "Yearly", value: "yearly" },
-  { label: "Monthly", value: "monthly" },
 ];

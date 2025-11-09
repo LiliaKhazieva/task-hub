@@ -8,8 +8,6 @@ import { LogOut, Pointer, PoundSterling } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/config/pages.config";
-import cn from "clsx";
-import clsx from "clsx";
 
 export function Sidebar() {
   const [data, setData] = useState(null);

@@ -13,17 +13,13 @@ import { ChartHeader } from "./ChartHeader";
 import { monthData, yearData } from "./chart.data";
 import { CustomTooltip } from "./CustomTooltip";
 import { ThemeContext } from "@/providers/ThemeProvider";
-import { ISelect } from "../tasks/Tasks";
 
 export function Chart() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   useContext;
-  const [selectedRange, setSelectedRange] = useState<ISelect | null>({
-    label: "Yearly",
-    value: "yearly",
-  });
+  const [selectedRange, setSelectedRange] = useState<string | null>("yearly");
 
-  const selectedData = selectedRange?.value === "yearly" ? yearData : monthData;
+  const selectedData = selectedRange === "yearly" ? yearData : monthData;
 
   return (
     <div

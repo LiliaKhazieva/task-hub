@@ -10,10 +10,6 @@ import { taskStore } from "@/store/store";
 import { ITask, TTaskSortBy, TTaskStatus } from "@/types/task.types";
 import { CustomSort } from "../custom-select/CustomSort";
 
-export interface ISelect {
-  label: string;
-  value: string;
-}
 export const Tasks = observer(({ tasks }: { tasks: ITask[] }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   // const filteredTask = taskStore.filteredTasks;
