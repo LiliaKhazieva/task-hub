@@ -13,6 +13,8 @@ import { ChartHeader } from "./ChartHeader";
 import { monthData, yearData } from "./chart.data";
 import { CustomTooltip } from "./CustomTooltip";
 import { ThemeContext } from "@/providers/ThemeProvider";
+import DropdownStore from "@/store/filter.store";
+import Dropdown from "../custom-select/Dropdown";
 
 export function Chart() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -21,14 +23,17 @@ export function Chart() {
 
   const selectedData = selectedRange === "yearly" ? yearData : monthData;
 
+  const calendarData = new DropdownStore([
+    { value: "month", label: "month" },
+    { value: "year", label: "year" },
+  ]);
+
   return (
     <div
       className={theme === "dark" ? `task ${styles.wrapper}` : styles.wrapper}
     >
-      <ChartHeader
-        selectedRange={selectedRange}
-        onRangeChange={setSelectedRange}
-      />
+      <h2 className={styles.heading}>Project Statistic</h2>
+      <Dropdown store={calendarData} />
       <AreaChart
         width={700}
         height={255}

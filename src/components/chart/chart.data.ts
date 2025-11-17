@@ -14,3 +14,5 @@ export const monthData: IChartDataPoint[] = [
   { label: "Week 3", value: 20 },
   { label: "Week 4", value: 12 },
 ];
+
+export const arraySelect: string[] = ["year", "month"];

@@ -1,6 +1,6 @@
 import { RefObject, useRef, useState } from "react";
 import s from "./CustomSelect.module.scss";
-import { ISelect } from "../tasks/Tasks";
+
 import { ChevronDown } from "lucide-react";
 import { observer } from "mobx-react-lite";
 import { taskStore } from "@/store/store";
@@ -8,35 +8,39 @@ import { TTaskSortBy, TTaskStatus } from "@/types/task.types";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
 interface Props {
-  options: Array<TTaskStatus | "all">;
+  array: string[];
+  current: string;
+  onClicks: () => void;
 }
 
-export const CustomSelect = observer(({ options }: Props) => {
+export const CustomSelect = observer(({ array, current, onClicks }: Props) => {
   const [isShowOption, setIsShowOption] = useState(false);
+  console.log(current, onClicks);
   const menuRef = useRef<HTMLDivElement>(null);
-  const currentStatus = taskStore.status;
 
   useClickOutside(menuRef, () => {
     setIsShowOption(false);
   });
 
   return (
-    <div className={s.select}>
-      <div className={s.selected} onClick={() => setIsShowOption(true)}>
-        {currentStatus || "all"}
+    <div className={s.select} ref={menuRef}>
+      <div
+        className={s.selected}
+        onClick={() => setIsShowOption(!isShowOption)}
+      >
+        {current || array[0]}
         <ChevronDown size={18} />
       </div>
       {isShowOption && (
         <div
-          ref={menuRef}
           className={isShowOption ? `${s.show} ${s.options}` : `${s.options}`}
         >
-          {options.map((option, i) => (
+          {array.map((option, i) => (
             <div
               key={i}
               className={s.option}
               onClick={() => {
-                taskStore.setStatus(option === "all" ? null : option);
+                onClicks;
                 setIsShowOption(false);
               }}
             >

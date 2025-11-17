@@ -14,7 +14,6 @@
   }
   .options {
     position: absolute;
-    display: none;
     top: 100%;
     left: 0;
     right: 0;
@@ -22,18 +21,12 @@
     background-color: var(--background-main);
     border-radius: 10px;
     z-index: 99;
-    opacity: 0;
-    transition: opacity 0.3s ease;
     .option {
       padding: 10px;
       cursor: pointer;
       &:hover {
         background-color: var(--color-hover);
       }
-    }
-    &.show {
-      display: block;
-      opacity: 1;
     }
   }
 }

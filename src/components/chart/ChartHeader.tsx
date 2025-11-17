@@ -1,22 +1,13 @@
 "use client";
 import styles from "./Chart.module.scss";
-import { timeRanges } from "./chart.data";
-import { ISelect } from "../tasks/Tasks";
-import Select from "react-select";
+import { arraySelect } from "./chart.data";
 import { CustomSelect } from "./ChartCustomSelect";
+import DropdownStore from "@/store/filter.store";
 
 interface Props {
-  onRangeChange: (select: ISelect | null) => void;
-  selectedRange: ISelect;
+  options: string[];
 }
 
-const array: string[] = ["year", "month"];
-
-export function ChartHeader({ onRangeChange, selectedRange }: Props) {
-  return (
-    <div className={styles.chartHeader}>
-      <h2 className={styles.heading}>Project Statistic</h2>
-      <CustomSelect options={array} />
-    </div>
-  );
+export function ChartHeader({ options }: Props) {
+  return <div className={styles.chartHeader}></div>;
 }

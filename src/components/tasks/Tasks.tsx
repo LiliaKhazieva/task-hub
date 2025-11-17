@@ -9,30 +9,37 @@ import { observer } from "mobx-react-lite";
 import { taskStore } from "@/store/store";
 import { ITask, TTaskSortBy, TTaskStatus } from "@/types/task.types";
 import { CustomSort } from "../custom-select/CustomSort";
+import Dropdown from "../custom-select/Dropdown";
+import DropdownStore from "@/store/filter.store";
 
 export const Tasks = observer(({ tasks }: { tasks: ITask[] }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   // const filteredTask = taskStore.filteredTasks;
+  const currentStatus = taskStore.status;
+  const currentSort = taskStore.sortByDueDate;
 
   // const dispatch = useDispatch();
   // const items = useSelector((state) => state.task.items);
 
-  const selectData: Array<TTaskStatus | "all"> = [
-    "all",
-    "not-started",
-    "in-progress",
-    "completed",
-  ];
+  const selectData = new DropdownStore([
+    { value: "msk", label: "all" },
+    { value: "spb", label: "not-started" },
+    { value: "ekb", label: "in-progress" },
+    { value: "1", label: "completed" },
+  ]);
 
-  const sortData: Array<TTaskSortBy | "asc"> = ["asc", "desc"];
+  const sortData = new DropdownStore([
+    { value: "asc", label: "asc" },
+    { value: "desc", label: "desc" },
+  ]);
 
   return (
     <>
       <div className={styles.wrapper}>
         <h2 className={styles.title}>Last Tasks ({tasks?.length})</h2>
         <div className={styles.sortContent}>
-          <CustomSelect options={selectData} />
-          <CustomSort options={sortData} />
+          <Dropdown store={selectData} />
+          <Dropdown store={sortData} />
         </div>
       </div>
 

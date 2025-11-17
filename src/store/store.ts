@@ -1,3 +1,4 @@
+import { TChartSelect } from "@/components/chart/chart.data";
 import { TASKS } from "@/components/tasks/tasks.data";
 import {
   ITask,
@@ -10,8 +11,9 @@ import { makeAutoObservable } from "mobx";
 
 class TaskStore {
   tasks: ITask[] = TASKS;
-  status: TTaskStatus | null = "all";
-  sortByDueDate: TTaskSortBy = "asc";
+  status: string | null = "all";
+  sortByDueDate: TTaskSortBy | null = "asc";
+  chartSelect: TChartSelect = "month";
 
   constructor() {
     makeAutoObservable(this);
@@ -44,6 +46,10 @@ class TaskStore {
   }
   setSortByDueDate(sortBy: TTaskSortBy): void {
     this.sortByDueDate = sortBy;
+  }
+
+  setChartSelect(select: TChartSelect): void {
+    this.chartSelect = select;
   }
 
   get filteredTasks(): ITask[] {

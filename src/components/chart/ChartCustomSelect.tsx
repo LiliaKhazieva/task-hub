@@ -12,7 +12,7 @@ interface Props {
 export const CustomSelect = observer(({ options }: Props) => {
   const [isShowOption, setIsShowOption] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const select = ["year", "month"];
+  const select = taskStore.chartSelect;
 
   useClickOutside(menuRef, () => {
     setIsShowOption(false);
@@ -21,7 +21,7 @@ export const CustomSelect = observer(({ options }: Props) => {
   return (
     <div className={s.select}>
       <div className={s.selected} onClick={() => setIsShowOption(true)}>
-        {select[0] || "year"}
+        {select[0] || select}
         <ChevronDown size={18} />
       </div>
       {isShowOption && (
