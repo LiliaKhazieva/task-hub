@@ -9,7 +9,6 @@ import {
   YAxis,
 } from "recharts";
 import { useContext, useState } from "react";
-import { ChartHeader } from "./ChartHeader";
 import { monthData, yearData } from "./chart.data";
 import { CustomTooltip } from "./CustomTooltip";
 import { ThemeContext } from "@/providers/ThemeProvider";
@@ -32,8 +31,10 @@ export function Chart() {
     <div
       className={theme === "dark" ? `task ${styles.wrapper}` : styles.wrapper}
     >
-      <h2 className={styles.heading}>Project Statistic</h2>
-      <Dropdown store={calendarData} />
+      <div className={styles.chartHeader}>
+        <h2 className={styles.heading}>Project Statistic</h2>
+        <Dropdown store={calendarData} />
+      </div>
       <AreaChart
         width={700}
         height={255}
