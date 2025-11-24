@@ -16,7 +16,7 @@ class DropdownStore {
     makeAutoObservable(this);
   }
 
-  selectOption(value: string | number) {
+  selectOption(value: string) {
     this.selectedValue = value;
     this.close();
   }

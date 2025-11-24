@@ -14,18 +14,14 @@ import { CustomTooltip } from "./CustomTooltip";
 import { ThemeContext } from "@/providers/ThemeProvider";
 import DropdownStore from "@/store/filter.store";
 import Dropdown from "../custom-select/Dropdown";
+import { taskStore } from "@/store/store";
+import { observer } from "mobx-react-lite";
 
-export function Chart() {
+const Chart = ({ store }: { store: DropdownStore }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  useContext;
-  const [selectedRange, setSelectedRange] = useState<string | null>("yearly");
+  const [selectedRange, setSelectedRange] = useState<string | null>("month");
 
-  const selectedData = selectedRange === "yearly" ? yearData : monthData;
-
-  const calendarData = new DropdownStore([
-    { value: "month", label: "month" },
-    { value: "year", label: "year" },
-  ]);
+  const selectedData = store.selectedValue === "month" ? yearData : monthData;
 
   return (
     <div
@@ -33,7 +29,7 @@ export function Chart() {
     >
       <div className={styles.chartHeader}>
         <h2 className={styles.heading}>Project Statistic</h2>
-        <Dropdown store={calendarData} />
+        <Dropdown store={store} />
       </div>
       <AreaChart
         width={700}
@@ -66,4 +62,6 @@ export function Chart() {
       </AreaChart>
     </div>
   );
-}
+};
+
+export default observer(Chart);

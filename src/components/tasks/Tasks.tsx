@@ -22,10 +22,10 @@ export const Tasks = observer(({ tasks }: { tasks: ITask[] }) => {
   // const items = useSelector((state) => state.task.items);
 
   const selectData = new DropdownStore([
-    { value: "msk", label: "all" },
-    { value: "spb", label: "not-started" },
-    { value: "ekb", label: "in-progress" },
-    { value: "1", label: "completed" },
+    { value: "all", label: "all" },
+    { value: "not-started", label: "not-started" },
+    { value: "in-progress", label: "in-progress" },
+    { value: "completed", label: "completed" },
   ]);
 
   const sortData = new DropdownStore([

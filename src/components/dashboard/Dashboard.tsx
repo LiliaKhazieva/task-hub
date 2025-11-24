@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
-import { Chart } from "../chart/Chart";
 import { Tasks } from "../tasks/Tasks";
 import { TodayTasks } from "../today-tasks/TodayTasks";
 import styles from "./Dashboard.module.scss";
 import { ITask } from "@/types/task.types";
+import DropdownStore from "@/store/filter.store";
+import Chart from "../chart/Chart";
 
 interface Props {
   tasks: ITask[];
@@ -13,6 +13,10 @@ interface Props {
 }
 
 export function Dashboard({ tasks, todayTasks }: Props) {
+  const calendarData = new DropdownStore([
+    { value: "month", label: "month" },
+    { value: "year", label: "year" },
+  ]);
   return (
     <>
       <div className={styles.dashboard}>
@@ -52,10 +56,10 @@ export function Dashboard({ tasks, todayTasks }: Props) {
             </div>
           </div>
         </div>
-        <Chart />
+        <Chart store={calendarData} />
       </div>
       <Tasks tasks={tasks} />
-      {/* <TodayTasks todayTasks={todayTasks} /> */}
+      <TodayTasks todayTasks={todayTasks} />
     </>
   );
 }

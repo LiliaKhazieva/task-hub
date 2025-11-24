@@ -5,6 +5,7 @@ import DropdownStore, { Option } from "../../store/filter.store";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import styles from "./CustomSelect.module.scss";
 import cn from "clsx";
+import { ChevronDown } from "lucide-react";
 
 interface DropdownProps {
   store: DropdownStore;
@@ -23,14 +24,16 @@ const Dropdown: React.FC<DropdownProps> = ({
     store.close();
   });
 
-  const handleOptionClick = (option: Option) => {
-    store.selectOption(option.value);
-  };
-
   return (
     <div className={styles.select}>
-      <div className={styles.selected} onClick={() => store.toggle()}>
+      <div
+        className={styles.selected}
+        onClick={() => {
+          store.toggle();
+        }}
+      >
         {store.selectedLabel}
+        <ChevronDown size={18} />
       </div>
       {store.isOpen && (
         <div ref={menuRef} className={cn(styles.options)}>
@@ -39,7 +42,7 @@ const Dropdown: React.FC<DropdownProps> = ({
               key={option.value}
               className={styles.option}
               onClick={() => {
-                handleOptionClick(option);
+                store.selectOption(option.label);
               }}
             >
               {option.label}

@@ -12,7 +12,7 @@ import { makeAutoObservable } from "mobx";
 class TaskStore {
   tasks: ITask[] = TASKS;
   status: string | null = "all";
-  sortByDueDate: TTaskSortBy | null = "asc";
+  sortByDueDate: TTaskSortBy = "asc";
   chartSelect: TChartSelect = "month";
 
   constructor() {
