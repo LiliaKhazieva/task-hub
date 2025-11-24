@@ -59,7 +59,7 @@ export function Dashboard({ tasks, todayTasks }: Props) {
         <Chart store={calendarData} />
       </div>
       <Tasks tasks={tasks} />
-      <TodayTasks todayTasks={todayTasks} />
+      {/* <TodayTasks todayTasks={todayTasks} /> */}
     </>
   );
 }

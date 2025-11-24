@@ -4,11 +4,9 @@ import { TASKS } from "./tasks.data";
 import { useContext, useMemo, useState } from "react";
 import { ThemeContext } from "@/providers/ThemeProvider";
 import { Task } from "./task/Task";
-import { CustomSelect } from "../custom-select/CustomSelect";
 import { observer } from "mobx-react-lite";
 import { taskStore } from "@/store/store";
 import { ITask, TTaskSortBy, TTaskStatus } from "@/types/task.types";
-import { CustomSort } from "../custom-select/CustomSort";
 import Dropdown from "../custom-select/Dropdown";
 import DropdownStore from "@/store/filter.store";
 

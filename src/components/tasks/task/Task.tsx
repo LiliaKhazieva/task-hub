@@ -15,14 +15,14 @@ import { createPortal } from "react-dom";
 import { CreateTask } from "@/components/formCreateSubTask/CreateTask";
 
 import { FormEditTask } from "@/components/formEditTask/FormEditTask";
+import { ta } from "zod/locales";
 
-export const Task = ({ task }: { task: any }) => {
+export const Task = ({ task }: { task: ITask }) => {
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [isOpenAdd, setIsOpenAdd] = useState(false);
-
   const completedTask =
-    task?.sub_task?.filter((t) => t.is_completed).length || 0;
-  const totalCount = task?.sub_task?.length || 0;
+    task?.sub_tasks?.filter((t) => t.is_completed).length || 0;
+  const totalCount = task?.sub_tasks?.length || 0;
   const progress = Math.round((completedTask / totalCount) * 100) || 0;
 
   const correctDate = new Date(task.due_date);
@@ -43,15 +43,16 @@ export const Task = ({ task }: { task: any }) => {
           <span>Due: {dueDate} days</span>
         </div>
         <div className={styles.users}>
-          {task.task_participants
-            .filter((u) => Boolean(u.profile))
-            .map(({ profile }) => (
-              <img
-                key={profile.id}
-                src={profile?.avatar_path || ""}
-                alt={profile?.name || ""}
-              />
-            ))}
+          {task.users &&
+            task?.users
+              .filter((u) => Boolean(u.avatar))
+              .map((user) => (
+                <img
+                  key={user.id}
+                  src={user?.avatar || ""}
+                  alt={user?.name || ""}
+                />
+              ))}
         </div>
       </div>
       <div className={styles.progress}>
@@ -88,7 +89,10 @@ export const Task = ({ task }: { task: any }) => {
               }}
             />
             {isOpenAdd && (
-              <CreateTask id={task.id} onClose={() => setIsOpenAdd(false)} />
+              <CreateTask
+                subTask={task.sub_tasks && task?.sub_tasks[0]?.title}
+                onClose={() => setIsOpenAdd(false)}
+              />
             )}
           </span>
           <span

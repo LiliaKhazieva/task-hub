@@ -10,41 +10,17 @@ import { createSubTask } from "@/services/tasks/task-client.service";
 
 export const CreateTask = ({
   onClose,
-  id,
+  subTask,
 }: {
   onClose: () => void;
-  id: string;
+  subTask: string;
 }) => {
   // const [title, setName] = useState("");
   const [error, setError] = useState("");
 
-  console.log(id);
-
-  // const isValidName = title === "";
-
-  // const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   if (name.trim()) {
-  //     setError("Поле неможет быть пустым");
-  //   }
-  //   setName(e.target.value);
-  // };
-
-  // const { mutate, isPending } = useMutation({
-  //   mutationKey: ["addSubTask", id],
-  //   mutationFn: () => createSubTask(id, { name }),
-  //   onSuccess() {
-  //     toast.success("Subtask added successfully");
-  //     setName("");
-  //     onClose();
-  //   },
-  //   onError() {
-  //     toast.error("Failed to add subtask");
-  //   },
-  // });
-
   const onSubmit = (e) => {
     const title = e.target[0].value;
-    createSubTask(id, { title });
+    createSubTask(subTask.id, { title });
     // mutate();
     toast.success("SubTask updated successfully", {
       id: "toast",
@@ -55,14 +31,14 @@ export const CreateTask = ({
     <div className={s.wrapper}>
       <div className={s.modal} onClick={(e) => e.stopPropagation()}>
         <X onClick={onClose} className={s.closeBtn} />
-        <h4>Create subTask{id}</h4>
+        <h4>Create SubTask</h4>
         <form onSubmit={onSubmit} className={s.form}>
           <label className={s.label}>
             Name
             <input
               className={s.input}
               type="text"
-              // value={name}
+              value={subTask}
               // onChange={handleInputChange}
               id="title"
               required
