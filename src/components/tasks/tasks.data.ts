@@ -22,7 +22,7 @@ export const USERS: IProfile[] = [
     name: "Sofia",
     email: "sofia@gmail.com",
     avatar:
-      "https://images.unsplash.com/photo-1640951613773-54706e06851d?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://yaart-web-alice-images.s3.yandex.net/c9805dafb27211f0a802aeb24f0405d6:1",
   },
   {
     id: "44444444-4444-4444-4444-444444444444",

@@ -51,25 +51,41 @@
         position: relative;
         display: flex;
         width: 35%;
+
         img {
           position: absolute;
           border: 1px #fff solid;
           top: 0;
-          right: 0;
-          width: 30px;
-          height: 30px;
+          right: 30;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
           object-fit: cover;
+          z-index: 2;
           &:nth-child(2) {
             position: absolute;
             top: 0;
-            right: 20px;
+            right: 50;
           }
           &:nth-child(3) {
             position: absolute;
             top: 0;
-            right: 40px;
+            right: 70;
           }
+        }
+        .img {
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px #fff solid;
+          background-color: #e4d9ea;
+          top: 0;
+          right: 0;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
         }
       }
     }
