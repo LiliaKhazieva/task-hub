@@ -7,29 +7,25 @@ export const USERS: IProfile[] = [
     id: "11111111-1111-1111-1111-111111111111",
     name: "Lilia",
     email: "darkens@gmail.com",
-    avatar:
-      "https://yaart-web-alice-images.s3.yandex.net/3162f1d7b27211f080d50ed853a713d3:1",
+    avatar: "1234.jpeg",
   },
   {
     id: "22222222-2222-2222-2222-222222222222",
     name: "David",
     email: "lololoshka@gmail.com",
-    avatar:
-      "https://yaart-web-alice-images.s3.yandex.net/remixed_82262220b27211f0b3099e6ec7290088_1002863345_generation_0",
+    avatar: "1234.jpeg",
   },
   {
     id: "33333333-3333-3333-3333-333333333333",
     name: "Sofia",
     email: "sofia@gmail.com",
-    avatar:
-      "https://yaart-web-alice-images.s3.yandex.net/c9805dafb27211f0a802aeb24f0405d6:1",
+    avatar: "1234.jpeg",
   },
   {
     id: "44444444-4444-4444-4444-444444444444",
     name: "Maria",
     email: "maria@gmail.com",
-    avatar:
-      "https://yaart-web-alice-images.s3.yandex.net/c9805dafb27211f0a802aeb24f0405d6:1",
+    avatar: "1234.jpeg",
   },
   {
     id: "55555555-5555-5555-5555-555555555555",
@@ -42,15 +38,13 @@ export const USERS: IProfile[] = [
     id: "66666666-6666-6666-6666-666666666666",
     name: "Pavel",
     email: "pavel@gmail.com",
-    avatar:
-      "https://yaart-web-alice-images.s3.yandex.net/ded77fc3b27211f0b661b26ea6470736:1",
+    avatar: "1234.jpeg",
   },
   {
     id: "77777777-7777-7777-7777-777777777777",
     name: "Daria",
     email: "daria@gmail.com",
-    avatar:
-      "https://yaart-web-alice-images.s3.yandex.net/c9805dafb27211f0a802aeb24f0405d6:1",
+    avatar: "1234.jpeg",
   },
 ];
 

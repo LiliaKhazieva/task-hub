@@ -2,7 +2,7 @@ import { LucideIcon } from "lucide-react";
 import { IProfile } from "./profile.types";
 
 export interface ISubTask {
-  id?: string;
+  id: string;
   title: string;
   is_completed?: boolean;
 }

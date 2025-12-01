@@ -7,20 +7,21 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 import { createSubTask } from "@/services/tasks/task-client.service";
+import { ISubTask } from "@/types/task.types";
 
 export const CreateTask = ({
   onClose,
   subTask,
 }: {
   onClose: () => void;
-  subTask: string;
+  subTask: ISubTask;
 }) => {
   // const [title, setName] = useState("");
   const [error, setError] = useState("");
 
   const onSubmit = (e) => {
-    const title = e.target[0].value;
-    createSubTask(subTask.id, { title });
+    const title = e.target.value;
+    createSubTask(subTask?.id, { title });
     // mutate();
     toast.success("SubTask updated successfully", {
       id: "toast",
@@ -38,8 +39,8 @@ export const CreateTask = ({
             <input
               className={s.input}
               type="text"
-              value={subTask}
-              // onChange={handleInputChange}
+              value={subTask?.title}
+              onChange={onSubmit}
               id="title"
               required
             />
