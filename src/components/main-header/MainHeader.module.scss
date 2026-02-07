@@ -9,10 +9,14 @@
 
 .main {
   margin: 50px 0;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
   .banner {
     margin: 0 auto;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     .title {
       width: 50%;
@@ -20,6 +24,8 @@
     }
     .img {
       width: 50%;
+      height: 60vh;
+      object-fit: cover;
     }
   }
 }

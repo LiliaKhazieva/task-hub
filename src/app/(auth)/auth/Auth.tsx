@@ -24,7 +24,9 @@ export const Auth = () => {
   const onSubmit: SubmitHandler<IAuthForm> = ({ email, password }) => {
     if (type === "login") {
       login({ email, password });
-    } else signup({ email, password });
+    } else {
+      signup({ email, password });
+    }
   };
 
   return (
@@ -60,6 +62,7 @@ export const Auth = () => {
           {...register("password", { required: "Password is required!" })}
           type="password"
           placeholder="Введите пароль:"
+          minLength={8}
         />
         {errors.password?.message && (
           <p style={{ color: "red" }}>{errors.password.message}</p>

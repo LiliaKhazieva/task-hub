@@ -8,9 +8,10 @@ import { LogOut, Pointer, PoundSterling } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/config/pages.config";
+import { IProfile } from "@/types/profile.types";
 
 export function Sidebar() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<IProfile>();
   const [active, setActive] = useState(0);
   const router = useRouter();
 
@@ -42,7 +43,7 @@ export function Sidebar() {
 
     fetchData();
   }, []);
-
+  console.log(data);
   return (
     <section className={styles.container}>
       <div
@@ -59,11 +60,11 @@ export function Sidebar() {
       </div>
 
       <div className={styles.user}>
-        <img src={data?.avatar_path} alt="user" />
+        <img src={data ? data?.avatar_path : "/1234.jpeg"} alt="user" />
         <div className={styles.content}>
           <div>
-            <span>{data?.name}</span>
-            <span>darkens@gmail.com</span>
+            <span>{data ? data?.name : "User"}</span>
+            <span>{data?.email}</span>
           </div>
         </div>
       </div>

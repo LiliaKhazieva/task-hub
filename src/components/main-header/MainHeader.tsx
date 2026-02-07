@@ -25,7 +25,10 @@ export const MainHeader = (props: Props) => {
         <div className={styles.banner}>
           <div className={styles.title}>
             <h1>Готовое решение для вашего бизнеса</h1>
-            <p>Проекты, задачи, документы</p>
+            <p>
+              Проекты, задачи, документы. <Link href={"/auth"}>Войдите</Link>{" "}
+              чтобы начать
+            </p>
           </div>
           <img className={styles.img} src="images/banner.jpeg" alt="banner" />
         </div>

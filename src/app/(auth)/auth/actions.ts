@@ -13,12 +13,16 @@ export async function login({
 }) {
   const supabase = await createClient();
 
-  const { error } = await supabase.auth.signInWithPassword({
+  const { error, data } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
+  if (data.user?.email === email) {
+    console.log("hdtndtnjd");
+  }
   if (error) {
     throw error;
+
     // redirect("/auth");
   }
   revalidatePath("/", "layout");

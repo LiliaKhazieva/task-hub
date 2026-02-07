@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   bottom: 0;
-  background: url(https://pibig.info/uploads/posts/2022-11/1669663871_2-pibig-info-p-fon-gradient-fioletovii-oboi-2.jpg)
+  background: url("https://yaart-web-alice-images.s3.yandex.net/148edd3e043e11f182eacae094644fc9:1")
     no-repeat;
   background-size: cover;
   width: 100%;
@@ -43,6 +43,7 @@
 
         text-align: center;
         font-size: 13px;
+        cursor: pointer;
       }
       .login,
       .register {
@@ -65,6 +66,10 @@
       padding: 10px 20px;
       margin: 10px 0;
       outline: none;
+      &:focus {
+        box-shadow: 4px 10px 8px 0px rgba(34, 60, 80, 0.2);
+        border: 1px solid rgba(34, 60, 80, 0.4);
+      }
     }
     .errorBorder {
       border: 1px red solid;
