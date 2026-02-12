@@ -6,11 +6,14 @@ import styles from "./Dashboard.module.scss";
 import { ITask } from "@/types/task.types";
 import DropdownStore from "@/store/filter.store";
 import Chart from "../chart/Chart";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 interface Props {
   tasks: ITask[];
   todayTasks: ITask[];
 }
+
+const queryClient = new QueryClient();
 
 export function Dashboard({ tasks, todayTasks }: Props) {
   const calendarData = new DropdownStore([
@@ -36,7 +39,7 @@ export function Dashboard({ tasks, todayTasks }: Props) {
           <div className={styles.task} style={{ backgroundColor: "#FDE252" }}>
             <div>
               {" "}
-              <h3>35</h3>
+              <h3>{tasks.length}</h3>
               <span>On Goung Project</span>
             </div>
             <div className={styles.imgWrapper}>

@@ -1,13 +1,12 @@
 import React from "react";
-import styles from "./MainHeader.module.scss";
+import styles from "./StartPage.module.scss";
 import Button from "../button/Button";
-import cn from "clsx";
 import Link from "next/link";
 import { PAGE } from "@/config/pages.config";
 
 type Props = {};
 
-export const MainHeader = (props: Props) => {
+export const StartPage = (props: Props) => {
   return (
     <div className="container">
       <header className={styles.header}>
@@ -26,7 +25,10 @@ export const MainHeader = (props: Props) => {
           <div className={styles.title}>
             <h1>Готовое решение для вашего бизнеса</h1>
             <p>
-              Проекты, задачи, документы. <Link href={"/auth"}>Войдите</Link>{" "}
+              Проекты, задачи, документы.{" "}
+              <Link style={{ color: "#0000" }} href={PAGE.AUTH}>
+                Войдите
+              </Link>{" "}
               чтобы начать
             </p>
           </div>

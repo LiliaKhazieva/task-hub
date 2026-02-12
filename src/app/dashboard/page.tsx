@@ -1,10 +1,11 @@
-import { Chart } from "@/components/chart/Chart";
 import { Dashboard } from "@/components/dashboard/Dashboard";
 import Header from "@/components/header/Header";
 import {
   getTodayTasks,
   taskServerGetAll,
 } from "@/services/tasks/task-server.service";
+
+import { Providers } from "@/providers/Providers";
 
 import { Metadata } from "next";
 
@@ -24,9 +25,11 @@ export default async function DashboardPage() {
     return <div>Failed to load today tasks</div>;
   }
   return (
-    <div>
-      <Header title="Dashboard" />
-      <Dashboard tasks={data.data || []} todayTasks={todayTasks.data || []} />
-    </div>
+    <Providers>
+      <div>
+        <Header title="Dashboard" />
+        <Dashboard tasks={data.data || []} todayTasks={todayTasks.data || []} />
+      </div>
+    </Providers>
   );
 }

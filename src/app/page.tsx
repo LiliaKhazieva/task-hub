@@ -1,5 +1,4 @@
-import { Dashboard } from "@/components/dashboard/Dashboard";
-import { MainHeader } from "@/components/main-header/MainHeader";
+import { StartPage } from "@/components/start-page/StartPage";
 import { PAGE } from "@/config/pages.config";
 
 import { Providers } from "@/providers/Providers";
@@ -14,7 +13,7 @@ export default async function HomePage() {
   }
   return (
     <Providers>
-      <MainHeader />
+      <StartPage />
     </Providers>
   );
 }

@@ -4,7 +4,7 @@ import styles from "./Sidebar.module.scss";
 import { projectsData } from "../sidebar/sidebar.data";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { LogOut, Pointer, PoundSterling } from "lucide-react";
+import { LoaderPinwheel, LogOut, Pointer, PoundSterling } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { PAGE } from "@/config/pages.config";
@@ -14,6 +14,7 @@ export function Sidebar() {
   const [data, setData] = useState<IProfile>();
   const [active, setActive] = useState(0);
   const router = useRouter();
+  const [loader, setLoader] = useState(true);
 
   async function signOut() {
     const { error } = await createClient().auth.signOut();
@@ -25,6 +26,7 @@ export function Sidebar() {
   useEffect(() => {
     // функция для выполнения запроса
     const fetchData = async () => {
+      setLoader(true);
       try {
         const { data } = await createClient().auth.getUser();
         const profile = await createClient()
@@ -38,12 +40,16 @@ export function Sidebar() {
         setData(profile.data);
       } catch (error) {
         console.error("Произошла ошибка:", error);
+      } finally {
+        setLoader(false);
       }
     };
 
     fetchData();
   }, []);
+
   console.log(data);
+
   return (
     <section className={styles.container}>
       <div
@@ -60,7 +66,11 @@ export function Sidebar() {
       </div>
 
       <div className={styles.user}>
-        <img src={data ? data?.avatar_path : "/1234.jpeg"} alt="user" />
+        {loader === true ? (
+          <LoaderPinwheel />
+        ) : (
+          <img src={data ? data.avatar_path : "/1234.jpeg"} alt="user" />
+        )}
         <div className={styles.content}>
           <div>
             <span>{data ? data?.name : "User"}</span>
